@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private float XInput;
     private Rigidbody rb;
-
+    public float walkSpeed = 750;
+    public float friction = 0.25f;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(new Vector3(XInput,0,0),ForceMode.Acceleration);
+        Vector3 movementDirection = new Vector3(XInput * walkSpeed * Time.deltaTime, 0, 0);
+
+        rb.velocity = Vector3.Lerp(rb.velocity, movementDirection, friction);
     }
 }
