@@ -16,4 +16,9 @@ public class GroundCheck : MonoBehaviour
     {
         onGround = false;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        onGround = true;
+    }
 }

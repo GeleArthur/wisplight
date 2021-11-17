@@ -38,24 +38,28 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 movementDirection = new Vector3(XInput * walkSpeed * Time.deltaTime, rb.velocity.y, 0);
+
+        if (movementDirection.x == 0 && GC.onGround && rb.velocity.y < 0)
+        {
+            rb.useGravity = false;
+        }
+        else
+        {
+            rb.useGravity = true;
+        }
+
+
         if (GC.onGround)
         {
             rb.velocity = Vector3.Lerp(rb.velocity, movementDirection, friction);
         }
         else if(!GC.onGround)
         {
-            Vector3 movementDirection2 = new Vector3(XInput * walkSpeed * Time.deltaTime, rb.velocity.y, 0);
-            
-            if ((movementDirection2.x > 0f && this.rb.velocity.x < movementDirection2.x) || (movementDirection2.x < 0f && this.rb.velocity.x > movementDirection2.x))
-            {
-                airDirection.x = movementDirection2.x;
-                Debug.Log(airDirection.x);
-            }
-            else
-            {
-                airDirection.x = 0f;
-                Debug.Log(airDirection.x);
-            }
+            airDirection.x =
+                (movementDirection.x > 0f && this.rb.velocity.x < movementDirection.x) ||
+                (movementDirection.x < 0f && this.rb.velocity.x > movementDirection.x)
+                    ? movementDirection.x
+                    : 0f;
             this.rb.AddForce(airDirection.normalized * airAcceleration);
         }
     }
