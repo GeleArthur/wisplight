@@ -321,10 +321,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328690808}
+  - component: {fileID: 328690810}
   - component: {fileID: 328690807}
   - component: {fileID: 328690806}
-  - component: {fileID: 328690805}
-  - component: {fileID: 328690810}
+  - component: {fileID: 328690811}
   - component: {fileID: 328690809}
   m_Layer: 0
   m_Name: Player
@@ -333,20 +333,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &328690805
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328690804}
-  m_Material: {fileID: 13400000, guid: 2d9731292c21bea4aa41bb6b0a8dd28c, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &328690806
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -443,6 +429,21 @@ MonoBehaviour:
   friction: 0.16666667
   jumpPower: 3000
   jumpMultiplier: 22
+  airAcceleration: 6000
+  airDirection: {x: 0, y: 0, z: 0}
+--- !u!65 &328690811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328690804}
+  m_Material: {fileID: 13400000, guid: 2d9731292c21bea4aa41bb6b0a8dd28c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &530391093
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +592,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896517891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0.86, z: 0}
-  m_LocalScale: {x: 1, y: 2.6535, z: 10}
+  m_LocalPosition: {x: -5, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 3, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

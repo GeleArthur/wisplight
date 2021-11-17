@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         GC = GetComponentInChildren<GroundCheck>();
 
         // -9.81
-        // Physics.gravity = new Vector3(0, -40, 0);
+        Physics.gravity = new Vector3(0, -40, 0);
     }
 
     void Update()
