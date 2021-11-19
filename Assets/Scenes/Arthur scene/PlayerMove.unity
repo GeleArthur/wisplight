@@ -446,7 +446,6 @@ MonoBehaviour:
   jumpPower: 3000
   jumpMultiplier: 22
   airAcceleration: 6000
-  airDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &328690811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e40dcc4fca3e55419bb9e3bc17451b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMultiplayer: 1000
 --- !u!1 &530391093
 GameObject:
   m_ObjectHideFlags: 0
