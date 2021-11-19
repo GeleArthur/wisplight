@@ -445,7 +445,7 @@ MonoBehaviour:
   friction: 0.16666667
   jumpPower: 3000
   jumpMultiplier: 22
-  airAcceleration: 6000
+  airAcceleration: 3000
 --- !u!114 &328690811
 MonoBehaviour:
   m_ObjectHideFlags: 0
