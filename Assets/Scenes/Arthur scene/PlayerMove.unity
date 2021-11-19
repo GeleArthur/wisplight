@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleRadius: 5
-  forceMultiplayer: 1500
+  forceMultiplayer: 2000
 --- !u!1 &530391093
 GameObject:
   m_ObjectHideFlags: 0

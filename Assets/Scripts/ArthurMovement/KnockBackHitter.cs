@@ -32,6 +32,7 @@ public class KnockBackHitter : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, _circlePoint, out var hitInfo, 5f))
             {
+                _rigidbody.velocity = Vector3.zero;
                 _rigidbody.AddForce((transform.position - hitInfo.point).normalized*forceMultiplayer, ForceMode.Impulse);
             }
         }
