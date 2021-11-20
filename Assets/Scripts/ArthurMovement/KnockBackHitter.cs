@@ -41,23 +41,21 @@ public class KnockBackHitter : MonoBehaviour
     {
         _rigidbody.velocity = Vector3.zero;
 
+        // Calculate the angle of the point
         float anglePoint = Mathf.Atan2(_circlePoint.x, _circlePoint.y);
+        // Calculate how large one piece of the circle pie
         float oneAngle = Mathf.PI * 2 / hitAngles;
+        // Calculate what line on the circle 
         float angleNumber = Mathf.Floor(anglePoint/oneAngle);
 
+        // The point is between line 1 and line +1
         float angleOne = angleNumber * oneAngle;
         float angleTwo = (angleNumber+1) * oneAngle;
         
-        Debug.Log(angleOne - anglePoint);
-        Debug.Log(anglePoint - angleTwo);
-        if (angleOne - anglePoint > anglePoint - angleTwo)
-        {
-            newdir = new Vector3(Mathf.Sin(angleOne), Mathf.Cos(angleOne), 0);
-        }
-        else
-        {
-            newdir = new Vector3(Mathf.Sin(angleTwo), Mathf.Cos(angleTwo), 0);
-        }
+        // Look what angle is closer to the point Select that line
+        newdir = angleOne - anglePoint > anglePoint - angleTwo ? 
+            new Vector3(Mathf.Sin(angleOne), Mathf.Cos(angleOne), 0) : 
+            new Vector3(Mathf.Sin(angleTwo), Mathf.Cos(angleTwo), 0);
         
         // Debug.Log(angleNumber);
         
