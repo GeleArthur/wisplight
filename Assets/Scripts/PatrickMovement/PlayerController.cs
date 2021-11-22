@@ -8,33 +8,34 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float speed = 10f;
     [SerializeField] float acceration = 10f;
+    [SerializeField] float jumpForce = 15f;
     [SerializeField] float gravity = 9.8f;
-    [SerializeField] float sensativity = 10f;
+    [SerializeField] float sensativity = 0.75f;
+    [Range(0f, 1f)]
+    [SerializeField] float drag = 0.1f;
 
     CharacterController characterController;
     private Vector2 velocity = new Vector2();
-    private Vector2 mouseDir = Vector2.up;
-    private Vector2 lastMousePos = new Vector2();
+    private Vector2 mouseDir = Vector2.down;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-       // Cursor.visible = true;
+        // Cursor.visible = true;
     }
 
     private void Start()
     {
-        lastMousePos = Input.mousePosition;
     }
 
     private void Update()
     {
-        Vector2 currentMousePos = Input.mousePosition;
-        if ((currentMousePos - lastMousePos).magnitude >= sensativity)
+        mouseDir += new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * sensativity;
+        mouseDir.Normalize();
+        if (Input.GetMouseButtonUp(0))
         {
-            mouseDir = (currentMousePos - lastMousePos).normalized;
-            lastMousePos = Input.mousePosition;
+            velocity += -mouseDir * jumpForce;
         }
     }
 
@@ -43,7 +44,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Physics.Raycast(transform.position + Vector3.down * characterController.bounds.extents.y, Vector3.down, 0.1f))
         {
-            velocity.x = Mathf.MoveTowards(velocity.x, Input.GetAxisRaw("Horizontal") * speed, acceration * Time.deltaTime);
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 0f)
+                velocity.x *= 1f - drag;
+
             if (velocity.y < 0f)
                 velocity.y = 0f;
         }
@@ -51,6 +54,10 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y -= gravity * Time.deltaTime;
         }
+
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0f)
+            velocity.x = Mathf.MoveTowards(velocity.x, Input.GetAxisRaw("Horizontal") * speed, acceration * Time.deltaTime);
+
         characterController.Move(velocity * Time.deltaTime);
     }
 
