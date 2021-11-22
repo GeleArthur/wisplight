@@ -14,7 +14,7 @@ public class KnockBackHitter : MonoBehaviour
 
     public float forceMultiplayer;
 
-    public Vector3 newdir;
+    public Vector3 clickDiraction;
     
     void Start()
     {
@@ -33,14 +33,30 @@ public class KnockBackHitter : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _rigidbody.AddForce(GetKnockBackForce(), ForceMode.Impulse);
+            clickDiraction = GetClickDirection();
+            if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, 5f))
+            {
+                Vector3 force = -clickDiraction * forceMultiplayer;
+
+                Vector3 CurrentVelocity = new Vector3(
+                    force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x,
+                    force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
+                
+                //Debug.Log(CurrentVelocity);
+
+                //force += CurrentVelocity;
+                //Debug.Log(force);
+                
+                _rigidbody.velocity = force;
+                // _rigidbody.velocity = Vector3.zero;
+                // _rigidbody.AddForce(force, ForceMode.Impulse);
+            }
+            
         }
     }
 
-    private Vector3 GetKnockBackForce()
+    private Vector3 GetClickDirection()
     {
-        _rigidbody.velocity = Vector3.zero;
-
         // Calculate the angle of the point
         float anglePoint = Mathf.Atan2(_circlePoint.x, _circlePoint.y);
         // Calculate how large one piece of the circle pie
@@ -53,19 +69,9 @@ public class KnockBackHitter : MonoBehaviour
         float angleTwo = (angleNumber+1) * oneAngle;
         
         // Look what angle is closer to the point Select that line
-        newdir = angleOne - anglePoint > anglePoint - angleTwo ? 
+        return angleOne - anglePoint > anglePoint - angleTwo ? 
             new Vector3(Mathf.Sin(angleOne), Mathf.Cos(angleOne), 0) : 
             new Vector3(Mathf.Sin(angleTwo), Mathf.Cos(angleTwo), 0);
-        
-        // Debug.Log(angleNumber);
-        
-        // if (Physics.Raycast(transform.position, newdir, out RaycastHit hitInfo, 5f))
-        // {
-        //     return (transform.position - hitInfo.point).normalized * forceMultiplayer;
-        // }
-        
-        
-        return Vector3.zero;
     }
 
     private void OnDrawGizmos()
@@ -75,15 +81,15 @@ public class KnockBackHitter : MonoBehaviour
         Handles.DrawSolidDisc(transform.position+_circlePoint, Vector3.back, circleRadius/10);
         Handles.DrawWireDisc(transform.position, Vector3.back, circleRadius);
 
-        var oneAngle = Mathf.PI * 2 / hitAngles;
+        // var oneAngle = Mathf.PI * 2 / hitAngles;
         
-        Handles.color = Color.blue;
-        for (int i = 0; i < hitAngles; i++)
-        {
-            Handles.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sin(oneAngle*i)*circleRadius,Mathf.Cos(oneAngle*i)*circleRadius, 0));
-        }
+        // Handles.color = Color.blue;
+        // for (int i = 0; i < hitAngles; i++)
+        // {
+        //     Handles.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sin(oneAngle*i)*circleRadius,Mathf.Cos(oneAngle*i)*circleRadius, 0));
+        // }
         
-        Debug.DrawRay(transform.position, newdir*10, Color.yellow);
+        Debug.DrawRay(transform.position, clickDiraction*10, Color.yellow);
 
     }
 }
