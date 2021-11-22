@@ -445,7 +445,7 @@ MonoBehaviour:
   friction: 0.16666667
   jumpPower: 3000
   jumpMultiplier: 22
-  airAcceleration: 3000
+  airAcceleration: 2000
 --- !u!114 &328690811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,9 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e40dcc4fca3e55419bb9e3bc17451b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleRadius: 5
-  hitAngles: 8
-  forceMultiplayer: 2000
+  circleRadius: 2.44
+  hitAngles: 16
+  forceMultiplayer: 20
   clickDiraction: {x: 0, y: 0, z: 0}
 --- !u!1 &530391093
 GameObject:

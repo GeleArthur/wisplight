@@ -34,21 +34,20 @@ public class KnockBackHitter : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             clickDiraction = GetClickDirection();
-            if (Physics.Raycast(transform.position, _circlePoint, out RaycastHit hitInfo, 5f))
+            if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, circleRadius))
             {
-                // Vector3 force = -clickDiraction * forceMultiplayer;
+                Vector3 force = -clickDiraction * forceMultiplayer;
 
-                _rigidbody.AddForce((transform.position - hitInfo.point).normalized*forceMultiplayer, ForceMode.Impulse);
                 // Vector3 CurrentVelocity = new Vector3(
                 //     force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x,
                 //     force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
                 
-                //Debug.Log(CurrentVelocity);
+                // Debug.Log(CurrentVelocity);
 
-                //force += CurrentVelocity;
-                //Debug.Log(force);
+                // force += CurrentVelocity;
+                Debug.Log(force);
                 
-                // _rigidbody.velocity = force;
+                _rigidbody.velocity = force;
                 // _rigidbody.velocity = Vector3.zero;
                 // _rigidbody.AddForce(force, ForceMode.Impulse);
             }
@@ -77,7 +76,14 @@ public class KnockBackHitter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Handles.color = Input.GetMouseButton(0) ? Color.red : Color.white;
+        clickDiraction = GetClickDirection();
+        if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, circleRadius))
+        {
+            // Handles.color = Color.green;
+            Handles.color = Input.GetMouseButton(0) ? Color.red : Color.green;
+        }
+        
+
         
         Handles.DrawSolidDisc(transform.position+_circlePoint, Vector3.back, circleRadius/10);
         Handles.DrawWireDisc(transform.position, Vector3.back, circleRadius);

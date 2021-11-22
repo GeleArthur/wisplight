@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [Range(0,1)]
     public float friction = 0.25f;
 
+    
+    
     public float jumpPower = 3;
     public float jumpMultiplier = 1;
 
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _groundCheck.onGround) Jump();
     }
 
+    
+    
     private void FixedUpdate()
     {
         Vector3 movementDirection = new Vector3(_xInput * walkSpeed * Time.deltaTime, _rigidbody.velocity.y, 0);
