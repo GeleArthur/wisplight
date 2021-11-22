@@ -460,7 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleRadius: 5
   hitAngles: 8
-  forceMultiplayer: 20
+  forceMultiplayer: 2000
   clickDiraction: {x: 0, y: 0, z: 0}
 --- !u!1 &530391093
 GameObject:

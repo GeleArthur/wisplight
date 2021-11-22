@@ -34,20 +34,21 @@ public class KnockBackHitter : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             clickDiraction = GetClickDirection();
-            if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, 5f))
+            if (Physics.Raycast(transform.position, _circlePoint, out RaycastHit hitInfo, 5f))
             {
-                Vector3 force = -clickDiraction * forceMultiplayer;
+                // Vector3 force = -clickDiraction * forceMultiplayer;
 
-                Vector3 CurrentVelocity = new Vector3(
-                    force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x,
-                    force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
+                _rigidbody.AddForce((transform.position - hitInfo.point).normalized*forceMultiplayer, ForceMode.Impulse);
+                // Vector3 CurrentVelocity = new Vector3(
+                //     force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x,
+                //     force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
                 
                 //Debug.Log(CurrentVelocity);
 
                 //force += CurrentVelocity;
                 //Debug.Log(force);
                 
-                _rigidbody.velocity = force;
+                // _rigidbody.velocity = force;
                 // _rigidbody.velocity = Vector3.zero;
                 // _rigidbody.AddForce(force, ForceMode.Impulse);
             }
