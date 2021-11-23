@@ -15,11 +15,11 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Return a random interger between x and y
+    /// Return a random integer between x and y
     /// </summary>
     /// <param name="a"></param>
-    /// <param name="maxInclusive">Should y be incluisve?</param>
-    /// <returns>Random interger</returns>
+    /// <param name="maxInclusive">Should y be inclusive?</param>
+    /// <returns>Random integer</returns>
     public static int GetRandom(this Vector2Int a, bool maxInclusive = false)
     {
         return Random.Range(a.x, maxInclusive ? (a.y + 1) : a.y);
