@@ -41,7 +41,7 @@ public class KnockBackHitter : MonoBehaviour
                 // Vector3 CurrentVelocity = new Vector3(force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x, force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
                 float x = 0;
 
-                if (_rigidbody.velocity.x > 0 && force.x > 0)
+                if (_rigidbody.velocity.x > 0 && force.x > 0 || force.x == 0)
                 {
                     Debug.Log("x > 0");
                     x = _rigidbody.velocity.x;
@@ -51,18 +51,14 @@ public class KnockBackHitter : MonoBehaviour
                     Debug.Log("x < 0");
                     x = _rigidbody.velocity.x;
                 }
-                if (force.x < 0.000000001f)
+                else if (Mathf.Abs(force.x) < 0.000000001f)
                 {
                     Debug.Log("x is 0");
                     Debug.Log(force.x);
                     x = _rigidbody.velocity.x;
                 }
-                Debug.Log(x);
-                    
-                // Debug.Log(CurrentVelocity);
-
+                
                 force += new Vector3(x,0,0);
-                // Debug.Log(force);
                 
                 _rigidbody.velocity = force;
                 // _rigidbody.velocity = Vector3.zero;
