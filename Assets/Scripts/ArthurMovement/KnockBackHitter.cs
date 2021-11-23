@@ -38,31 +38,19 @@ public class KnockBackHitter : MonoBehaviour
             {
                 Vector3 force = -clickDiraction * forceMultiplayer;
 
-                // Vector3 CurrentVelocity = new Vector3(force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x, force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
+                // Add velocity of player if it doesn't want to change direction
                 float x = 0;
+                if (_rigidbody.velocity.x > 0 && force.x > 0 ||
+                    _rigidbody.velocity.x < 0 && force.x < 0 ||
+                    Mathf.Abs(force.x) < 0.000000001f
+                    )
+                {
+                    x = _rigidbody.velocity.x;
+                }
 
-                if (_rigidbody.velocity.x > 0 && force.x > 0 || force.x == 0)
-                {
-                    Debug.Log("x > 0");
-                    x = _rigidbody.velocity.x;
-                }
-                else if (_rigidbody.velocity.x < 0 && force.x < 0)
-                {
-                    Debug.Log("x < 0");
-                    x = _rigidbody.velocity.x;
-                }
-                else if (Mathf.Abs(force.x) < 0.000000001f)
-                {
-                    Debug.Log("x is 0");
-                    Debug.Log(force.x);
-                    x = _rigidbody.velocity.x;
-                }
-                
                 force += new Vector3(x,0,0);
                 
                 _rigidbody.velocity = force;
-                // _rigidbody.velocity = Vector3.zero;
-                // _rigidbody.AddForce(force, ForceMode.Impulse);
             }
             
         }
