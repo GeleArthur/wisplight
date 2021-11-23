@@ -24,15 +24,17 @@ public class KnockBackHitter : MonoBehaviour
     {
         _circlePoint += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
 
-        if (Vector3.Distance(_circlePoint, Vector3.zero) > circleRadius)
-        {
+        // if (Vector3.Distance(_circlePoint, Vector3.zero) > circleRadius)
+        // {
             _circlePoint = _circlePoint.normalized * circleRadius;
-        }
+        // }
 
         if (Input.GetMouseButtonDown(0))
         {
             _clickDirection = GetClickDirection();
 
+            // var hits = Physics.CapsuleCastAll()
+            
             if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
             {
                 IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
