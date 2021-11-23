@@ -38,14 +38,31 @@ public class KnockBackHitter : MonoBehaviour
             {
                 Vector3 force = -clickDiraction * forceMultiplayer;
 
-                // Vector3 CurrentVelocity = new Vector3(
-                //     force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x,
-                //     force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
-                
+                // Vector3 CurrentVelocity = new Vector3(force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x, force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
+                float x = 0;
+
+                if (_rigidbody.velocity.x > 0 && force.x > 0)
+                {
+                    Debug.Log("x > 0");
+                    x = _rigidbody.velocity.x;
+                }
+                else if (_rigidbody.velocity.x < 0 && force.x < 0)
+                {
+                    Debug.Log("x < 0");
+                    x = _rigidbody.velocity.x;
+                }
+                if (force.x < 0.000000001f)
+                {
+                    Debug.Log("x is 0");
+                    Debug.Log(force.x);
+                    x = _rigidbody.velocity.x;
+                }
+                Debug.Log(x);
+                    
                 // Debug.Log(CurrentVelocity);
 
-                // force += CurrentVelocity;
-                Debug.Log(force);
+                force += new Vector3(x,0,0);
+                // Debug.Log(force);
                 
                 _rigidbody.velocity = force;
                 // _rigidbody.velocity = Vector3.zero;
@@ -76,8 +93,8 @@ public class KnockBackHitter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        clickDiraction = GetClickDirection();
-        if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, circleRadius))
+        var clickDirectionGiz = GetClickDirection();
+        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, circleRadius))
         {
             Handles.color = Input.GetMouseButton(0) ? Color.red : Color.green;
         }
