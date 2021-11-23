@@ -7,15 +7,13 @@ using UnityEngine;
 public class KnockBackHitter : MonoBehaviour
 {
     private Vector3 _circlePoint = Vector3.zero;
+    private Vector3 _clickDirection;
     private Rigidbody _rigidbody;
 
     public float circleRadius = 5;
     public int hitAngles = 4;
-
     public float forceMultiplayer;
 
-    public Vector3 clickDiraction;
-    
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,10 +31,18 @@ public class KnockBackHitter : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            clickDiraction = GetClickDirection();
-            if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, circleRadius))
+            _clickDirection = GetClickDirection();
+
+            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
             {
-                Vector3 force = -clickDiraction * forceMultiplayer;
+                IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
+                if (specialHit != null)
+                {
+                    specialHit.Hit();
+                    return;
+                }
+                
+                Vector3 force = -_clickDirection * forceMultiplayer;
 
                 // Add velocity of player if it doesn't want to change direction
                 float x = 0;
@@ -96,7 +102,7 @@ public class KnockBackHitter : MonoBehaviour
         //     Handles.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sin(oneAngle*i)*circleRadius,Mathf.Cos(oneAngle*i)*circleRadius, 0));
         // }
         
-        Debug.DrawRay(transform.position, clickDiraction*10, Color.yellow);
+        Debug.DrawRay(transform.position, _clickDirection*10, Color.yellow);
 
     }
 }
