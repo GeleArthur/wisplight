@@ -48,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.useGravity = false;
         else
             _rigidbody.useGravity = true;
-        
-
 
         if (_groundCheck.onGround)
         {

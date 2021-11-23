@@ -38,18 +38,19 @@ public class KnockBackHitter : MonoBehaviour
             {
                 Vector3 force = -clickDiraction * forceMultiplayer;
 
-                // Vector3 CurrentVelocity = new Vector3(
-                //     force.x > _rigidbody.velocity.x ? 0 : _rigidbody.velocity.x,
-                //     force.y > _rigidbody.velocity.y ? 0 : _rigidbody.velocity.y, 0);
-                
-                // Debug.Log(CurrentVelocity);
+                // Add velocity of player if it doesn't want to change direction
+                float x = 0;
+                if (_rigidbody.velocity.x > 0 && force.x > 0 ||
+                    _rigidbody.velocity.x < 0 && force.x < 0 ||
+                    Mathf.Abs(force.x) < 0.000000001f
+                    )
+                {
+                    x = _rigidbody.velocity.x;
+                }
 
-                // force += CurrentVelocity;
-                Debug.Log(force);
+                force += new Vector3(x,0,0);
                 
                 _rigidbody.velocity = force;
-                // _rigidbody.velocity = Vector3.zero;
-                // _rigidbody.AddForce(force, ForceMode.Impulse);
             }
             
         }
@@ -76,8 +77,8 @@ public class KnockBackHitter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        clickDiraction = GetClickDirection();
-        if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, circleRadius))
+        var clickDirectionGiz = GetClickDirection();
+        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, circleRadius))
         {
             Handles.color = Input.GetMouseButton(0) ? Color.red : Color.green;
         }
