@@ -32,8 +32,16 @@ public class KnockBackHitter : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _clickDirection = GetClickDirection();
+
             if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
             {
+                IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
+                if (specialHit != null)
+                {
+                    specialHit.Hit();
+                    return;
+                }
+                
                 Vector3 force = -_clickDirection * forceMultiplayer;
 
                 // Add velocity of player if it doesn't want to change direction
