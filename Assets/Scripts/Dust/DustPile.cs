@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DustPile : MonoBehaviour, IKnockBack
 {
-    private float amount = 0;
+    [SerializeField] private float amount = 0;
 
-    public void Hit()
+    public void Hit(Vector2 direction)
     {
         DustManager.Singleton.RemoveDust(amount);
         Destroy(gameObject);
