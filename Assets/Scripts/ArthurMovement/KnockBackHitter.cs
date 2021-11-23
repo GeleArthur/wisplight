@@ -79,14 +79,13 @@ public class KnockBackHitter : MonoBehaviour
         clickDiraction = GetClickDirection();
         if (Physics.Raycast(transform.position, clickDiraction, out RaycastHit hitInfo, circleRadius))
         {
-            // Handles.color = Color.green;
             Handles.color = Input.GetMouseButton(0) ? Color.red : Color.green;
         }
         
 
         
         Handles.DrawSolidDisc(transform.position+_circlePoint, Vector3.back, circleRadius/10);
-        Handles.DrawWireDisc(transform.position, Vector3.back, circleRadius);
+        Handles.DrawWireDisc(transform.position, Vector3.back, circleRadius, 3f);
 
         // var oneAngle = Mathf.PI * 2 / hitAngles;
         
