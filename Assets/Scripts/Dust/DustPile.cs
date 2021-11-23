@@ -6,7 +6,7 @@ public class DustPile : MonoBehaviour, IKnockBack
 {
     [SerializeField] private float amount = 0;
 
-    public void Hit(Vector2 direction)
+    public void Hit()
     {
         DustManager.Singleton.RemoveDust(amount);
         Destroy(gameObject);

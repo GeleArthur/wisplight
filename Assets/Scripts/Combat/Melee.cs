@@ -26,12 +26,12 @@ public class Melee : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void Attack()
     {
-        //var hits = Physics.CapsuleCastAll(transform.position, );
-        foreach (var hit in hits)
-        {
-          var foo =  hit.collider.GetComponent<IKnockBack>();
-          foo.Hit();
-        }
+        // var hits = Physics.CapsuleCastAll(transform.position, );
+        // foreach (var hit in hits)
+        // {
+        //   var foo =  hit.collider.GetComponent<IKnockBack>();
+        //   foo.Hit();
+        // }
     }
 
     private void OnDrawGizmos()
