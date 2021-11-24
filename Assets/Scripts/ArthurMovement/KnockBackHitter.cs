@@ -20,19 +20,23 @@ public class KnockBackHitter : MonoBehaviour
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
 
-    private bool controllSwitch = false;
+    private bool controllSwitch = true;
 
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
+        SimpleUI.instace?.SetOne(controllSwitch);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
+        {
+            SimpleUI.instace?.SetOne(controllSwitch);
             controllSwitch = !controllSwitch;
+        }
 
         if (controllSwitch)
         {
