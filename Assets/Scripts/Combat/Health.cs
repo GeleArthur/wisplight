@@ -5,10 +5,11 @@ using UnityEngine;
 public class Health : MonoBehaviour, IKnockBack
 {
     public int health;
-    
+    [SerializeField] private int damageAmount;
+        
     public void Hit()
     {
-        health -= 1;
+        health -= damageAmount;
         if (health <= 0) Die();
     }
 
