@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using Gizmos = Popcron.Gizmos;
 
 public class KnockBackHitter : MonoBehaviour
 {
@@ -40,14 +39,17 @@ public class KnockBackHitter : MonoBehaviour
 
         if (controllSwitch)
         {
-            _circlePoint += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
+            _circlePoint += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * 0.1f;
 
             // if (Vector3.Distance(_circlePoint, Vector3.zero) > circleRadius)
             // {
             _circlePoint = _circlePoint.normalized * circleRadius;
             // }
         }
-        else _circlePoint = PatrickDirectrion() * circleRadius;
+        else
+        {
+            _circlePoint = PatrickDirectrion() * circleRadius;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -119,7 +121,27 @@ public class KnockBackHitter : MonoBehaviour
 
     private Vector3 PatrickDirectrion()
     {
-        Vector2 dir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        Vector2 dir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"))*0.1f;
+        
+        // var x = Input.GetAxisRaw ("Mouse X");
+        // var y = Input.GetAxisRaw ("Mouse Y");
+        //
+        // if (Application.platform == RuntimePlatform.WebGLPlayer) {
+        //     x = DampenedMovement (x);
+        //     y = DampenedMovement (y);
+        // }
+        //
+        // float DampenedMovement (float value) {
+        //
+        //     if (Mathf.Abs (value) > 1f) {
+        //         // best value for dampenMouse is 0.5 but better make it user-adjustable
+        //         return Mathf.Lerp (value, Mathf.Sign (value), 0.5f);
+        //     }
+        //     return value;
+        // }
+
+        // dir = new Vector2(x, y);
+        
         float speed = dir.magnitude;
         dir.Normalize();
         float tAngle = Vector2.SignedAngle(Vector2.up, dir);

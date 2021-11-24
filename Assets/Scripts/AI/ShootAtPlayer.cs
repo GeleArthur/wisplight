@@ -41,6 +41,7 @@ public class ShootAtPlayer : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, dir.normalized * 50f);
@@ -51,4 +52,6 @@ public class ShootAtPlayer : MonoBehaviour
         Handles.color = inside ? Color.red : Color.white;
         Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
     }
+#endif
+
 }
