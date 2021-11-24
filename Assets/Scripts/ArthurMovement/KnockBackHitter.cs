@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Gizmos = Popcron.Gizmos;
 
 public class KnockBackHitter : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class KnockBackHitter : MonoBehaviour
     private Vector3 _clickDirection;
     private Rigidbody _rigidbody;
     private long _timeUntilClick;
+    public GameObject circlePointGm;
+    public GameObject circleStrokeGm;
+    
 
     public float circleRadius = 5;
     public int hitAngles = 4;
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
-    
 
     void Start()
     {
@@ -41,7 +44,8 @@ public class KnockBackHitter : MonoBehaviour
         {
             _clickDirection = GetClickDirection();
 
-            // var hits = Physics.CapsuleCastAll()
+            var hits = Physics.CapsuleCastAll(transform.position, _clickDirection, 0.5f, _clickDirection);
+            Debug.Log(hits.Length);
             
             if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
             {
@@ -71,6 +75,8 @@ public class KnockBackHitter : MonoBehaviour
                 _rigidbody.velocity = force;
             }
         }
+
+        UpdateFakeGizmos();
     }
 
     private Vector3 GetClickDirection()
@@ -92,6 +98,12 @@ public class KnockBackHitter : MonoBehaviour
             new Vector3(Mathf.Sin(angleTwo), Mathf.Cos(angleTwo), 0);
     }
 
+    private void UpdateFakeGizmos()
+    {
+        circlePointGm.transform.localPosition = _circlePoint;
+    }
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         var clickDirectionGiz = GetClickDirection();
@@ -99,8 +111,6 @@ public class KnockBackHitter : MonoBehaviour
         {
             Handles.color = Input.GetMouseButton(0) ? Color.red : Color.green;
         }
-        
-
         
         Handles.DrawSolidDisc(transform.position+_circlePoint, Vector3.back, circleRadius/10);
         Handles.DrawWireDisc(transform.position, Vector3.back, circleRadius, 3f);
@@ -113,7 +123,9 @@ public class KnockBackHitter : MonoBehaviour
         //     Handles.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sin(oneAngle*i)*circleRadius,Mathf.Cos(oneAngle*i)*circleRadius, 0));
         // }
         
+        
+        
         Debug.DrawRay(transform.position, _clickDirection*10, Color.yellow);
-
     }
+#endif
 }
