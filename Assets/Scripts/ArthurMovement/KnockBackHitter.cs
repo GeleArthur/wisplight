@@ -9,10 +9,13 @@ public class KnockBackHitter : MonoBehaviour
     private Vector3 _circlePoint = Vector3.zero;
     private Vector3 _clickDirection;
     private Rigidbody _rigidbody;
+    private long _timeUntilClick;
 
     public float circleRadius = 5;
     public int hitAngles = 4;
     public float forceMultiplayer;
+    public int waitTimeMilliseconds;
+    
 
     void Start()
     {
@@ -31,12 +34,19 @@ public class KnockBackHitter : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            _timeUntilClick = DateTime.Now.Ticks + waitTimeMilliseconds * TimeSpan.TicksPerMillisecond;
+        }
+
+        if (_timeUntilClick > DateTime.Now.Ticks)
+        {
             _clickDirection = GetClickDirection();
 
             // var hits = Physics.CapsuleCastAll()
             
             if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
             {
+                _timeUntilClick = DateTime.Now.Ticks;
+                
                 IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
                 if (specialHit != null)
                 {
@@ -51,7 +61,7 @@ public class KnockBackHitter : MonoBehaviour
                 if (_rigidbody.velocity.x > 0 && force.x > 0 ||
                     _rigidbody.velocity.x < 0 && force.x < 0 ||
                     Mathf.Abs(force.x) < 0.000000001f
-                    )
+                )
                 {
                     x = _rigidbody.velocity.x;
                 }
@@ -60,7 +70,6 @@ public class KnockBackHitter : MonoBehaviour
                 
                 _rigidbody.velocity = force;
             }
-            
         }
     }
 
