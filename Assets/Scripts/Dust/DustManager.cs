@@ -77,6 +77,8 @@ public class DustManager : MonoBehaviour
     public void RemoveDust(float amount)
     {
         currentDust -= amount;
+        if (currentDust <= 0)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     /// <summary>
