@@ -63,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
                     : 0f;
             _rigidbody.AddForce(_airDirection.normalized * airAcceleration);
         }
+
+        if (transform.position.y <= -10)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     private void Jump()
