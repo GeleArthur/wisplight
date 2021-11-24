@@ -13,12 +13,15 @@ public class KnockBackHitter : MonoBehaviour
     private long _timeUntilClick;
     public GameObject circlePointGm;
     public GameObject circleStrokeGm;
-    
+
 
     public float circleRadius = 5;
     public int hitAngles = 4;
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
+
+    private bool controllSwitch = false;
+
 
     void Start()
     {
@@ -28,12 +31,19 @@ public class KnockBackHitter : MonoBehaviour
 
     void Update()
     {
-        //_circlePoint += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
+        if (Input.GetKeyDown(KeyCode.P))
+            controllSwitch = !controllSwitch;
 
-        // if (Vector3.Distance(_circlePoint, Vector3.zero) > circleRadius)
-        // {
-        _circlePoint = PatrickDirectrion() * circleRadius;//_circlePoint.normalized * circleRadius;
-        // }
+        if (controllSwitch)
+        {
+            _circlePoint += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
+
+            // if (Vector3.Distance(_circlePoint, Vector3.zero) > circleRadius)
+            // {
+            _circlePoint = _circlePoint.normalized * circleRadius;
+            // }
+        }
+        else _circlePoint = PatrickDirectrion() * circleRadius;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -84,7 +94,7 @@ public class KnockBackHitter : MonoBehaviour
         float anglePoint = Mathf.Atan2(_circlePoint.x, _circlePoint.y);
         // Calculate how large one piece of the circle pie
         float oneAngle = Mathf.PI * 2 / hitAngles;
-        // Calculate what line on the circle 
+        // Calculate what line on the circle
         float angleNumber = Mathf.Floor(anglePoint / oneAngle);
 
         // The point is between line 1 and line +1
