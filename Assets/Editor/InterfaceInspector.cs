@@ -11,18 +11,19 @@ public class InterfaceInspector : Editor
 
     public override void OnInspectorGUI()
     {
-        if (GUILayout.Button(showInterfaces ? "Hide interfaces" : "Show interfaces"))
-            showInterfaces = !showInterfaces;
-
-        if (showInterfaces)
+        if (target is IKnockBack myTarget)
         {
-            if (target is IKnockBack myTarget)
+            if (GUILayout.Button(showInterfaces ? "Hide interfaces" : "Show interfaces"))
+                showInterfaces = !showInterfaces;
+
+            if (showInterfaces)
             {
                 EditorGUILayout.LabelField("IKnockBack");
                 if (GUILayout.Button("Hit"))
                     myTarget.Hit();
             }
         }
-        else base.OnInspectorGUI();
+        
+        base.OnInspectorGUI();
     }
 }
