@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (transform.position.y <= -10)
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Jump()
