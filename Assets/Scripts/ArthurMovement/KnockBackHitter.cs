@@ -12,44 +12,22 @@ public class KnockBackHitter : MonoBehaviour
     private long _timeUntilClick;
     public GameObject circlePointGm;
     public GameObject circleStrokeGm;
-
-
+    
     public float circleRadius = 5;
     public int hitAngles = 4;
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
 
-    private bool controllSwitch = true;
-
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         _rigidbody = GetComponent<Rigidbody>();
-        SimpleUI.instace?.SetOne(controllSwitch);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SimpleUI.instace?.SetOne(controllSwitch);
-            controllSwitch = !controllSwitch;
-        }
-
-        if (controllSwitch)
-        {
-            _circlePoint += new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * 0.1f;
-
-            // if (Vector3.Distance(_circlePoint, Vector3.zero) > circleRadius)
-            // {
-            _circlePoint = _circlePoint.normalized * circleRadius;
-            // }
-        }
-        else
-        {
-            _circlePoint = PatrickDirectrion() * circleRadius;
-        }
+        _circlePoint = PatrickDirection() * circleRadius;
+        
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -59,9 +37,7 @@ public class KnockBackHitter : MonoBehaviour
         if (_timeUntilClick > DateTime.Now.Ticks)
         {
             _clickDirection = GetClickDirection();
-
-            // var hits = Physics.CapsuleCastAll()
-
+            
             if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
             {
                 _timeUntilClick = DateTime.Now.Ticks;
@@ -116,39 +92,32 @@ public class KnockBackHitter : MonoBehaviour
     private void UpdateFakeGizmos()
     {
         circlePointGm.transform.localPosition = _circlePoint;
+        Vector3 clickDirectionGiz = GetClickDirection();
+        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, circleRadius))
+        {
+            circlePointGm.GetComponent<MeshRenderer>().material.color = Input.GetMouseButton(0) ? Color.red : Color.green;
+            circleStrokeGm.GetComponent<MeshRenderer>().material.color = Input.GetMouseButton(0) ? Color.red : Color.green;
+        }
+        else
+        {
+            circlePointGm.GetComponent<MeshRenderer>().material.color = Color.white;
+            circleStrokeGm.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
     }
 
 
-    private Vector3 PatrickDirectrion()
+    private Vector3 PatrickDirection()
     {
-        Vector2 dir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"))*0.1f;
-        
-        // var x = Input.GetAxisRaw ("Mouse X");
-        // var y = Input.GetAxisRaw ("Mouse Y");
-        //
-        // if (Application.platform == RuntimePlatform.WebGLPlayer) {
-        //     x = DampenedMovement (x);
-        //     y = DampenedMovement (y);
-        // }
-        //
-        // float DampenedMovement (float value) {
-        //
-        //     if (Mathf.Abs (value) > 1f) {
-        //         // best value for dampenMouse is 0.5 but better make it user-adjustable
-        //         return Mathf.Lerp (value, Mathf.Sign (value), 0.5f);
-        //     }
-        //     return value;
-        // }
+        Vector2 dir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        if (Application.platform == RuntimePlatform.WebGLPlayer) dir *= 0.1f;
 
-        // dir = new Vector2(x, y);
-        
         float speed = dir.magnitude;
         dir.Normalize();
         float tAngle = Vector2.SignedAngle(Vector2.up, dir);
         float cAngle = Vector2.SignedAngle(Vector2.up, _circlePoint.normalized);
         float rAngle = Mathf.MoveTowardsAngle(cAngle, tAngle, speed * 10f);
         //if(speed > 0)
-        Debug.Log($"{tAngle}");
+        // Debug.Log($"{tAngle}");
         /*{cAngle} => {tAngle} = {rAngle} */
         return Quaternion.Euler(0f, 0f, rAngle) * Vector3.up;
     }
