@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IKnockBack
@@ -17,16 +15,29 @@ public class Bullet : MonoBehaviour, IKnockBack
     
     void FixedUpdate()
     {
+        //the movement of the bullet
         rb.position += dir.normalized * speed;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject, 5f);
+        //destroy it after 6 seconds. Otherwise it will fly forever in the scene.
+        Destroy(gameObject, .1f);
+        
+        var otherHealth = other.GetComponent<Health>();
+       
+        //if this object collider, collides with another object that has the <Health> component on it
+        //it will continue to run the code and do damage on the colliding object
+        if(otherHealth == null) return;
+        otherHealth.Hit();
+        
+        //the object will already be destroyed so we set the object to false.
+        gameObject.SetActive(false);
     }
 
     public void Hit()
     {
+        //if the player hits the bullet it will have to fly to the pointing direction
         var playerKnockback = GameObject.FindGameObjectWithTag("Player").GetComponent<KnockBackHitter>();
         dir = playerKnockback._circlePoint;
     }
