@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class KnockBackHitter : MonoBehaviour
 {
-    private Vector3 _circlePoint = Vector3.zero;
+    public Vector3 _circlePoint = Vector3.zero;
     private Vector3 _clickDirection;
     private Rigidbody _rigidbody;
     private long _timeUntilClick;

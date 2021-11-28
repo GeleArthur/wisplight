@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IKnockBack
 {
     [SerializeField] private float speed;
     
@@ -23,5 +23,11 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject, 5f);
+    }
+
+    public void Hit()
+    {
+        var playerKnockback = GameObject.FindGameObjectWithTag("Player").GetComponent<KnockBackHitter>();
+        dir = playerKnockback._circlePoint;
     }
 }
