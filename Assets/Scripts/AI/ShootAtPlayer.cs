@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class ShootAtPlayer : MonoBehaviour
 {
+    [SerializeField] private bool resetTimerOutsideRadius = true;
     [SerializeField] private Transform player;
     [SerializeField] private float radius;
 
@@ -38,12 +39,19 @@ public class ShootAtPlayer : MonoBehaviour
         timer += shootingSpeed * Time.deltaTime;
         dir = player.position - transform.position;
 
-        if (timer >= 1f && InsideRadius())
+        if (InsideRadius())
         {
-            Shoot();
-            
+            if (timer >= 1f)
+            {
+                Shoot();
+                timer = 0;
+            }
+        }
+        else if(resetTimerOutsideRadius)
+        {
             timer = 0;
         }
+        
     }
 
     private bool InsideRadius()

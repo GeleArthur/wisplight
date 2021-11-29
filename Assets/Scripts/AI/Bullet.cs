@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour, IKnockBack
     private void OnTriggerEnter(Collider other)
     {
         //destroy it after 6 seconds. Otherwise it will fly forever in the scene.
-        Destroy(gameObject, .1f);
+        Destroy(gameObject, .05f);
         
         var otherHealth = other.GetComponent<Health>();
        
