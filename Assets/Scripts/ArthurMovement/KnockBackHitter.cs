@@ -17,6 +17,7 @@ public class KnockBackHitter : MonoBehaviour
     public int hitAngles = 4;
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
+    public GameObject broomModel;
 
     void Start()
     {
@@ -67,6 +68,8 @@ public class KnockBackHitter : MonoBehaviour
         }
 
         UpdateFakeGizmos();
+        broomModel.transform.localPosition = _circlePoint;
+        broomModel.transform.rotation = Quaternion.Euler(0,0, 180-Mathf.Atan2(_circlePoint.x, _circlePoint.y)*Mathf.Rad2Deg);
     }
 
     private Vector3 GetClickDirection()
