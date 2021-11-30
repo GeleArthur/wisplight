@@ -442,6 +442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
+  noAngleRange: 1
+  maxAngle: 90
 --- !u!1 &199157253117392057
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +596,7 @@ GameObject:
   - component: {fileID: 2121287884445967657}
   - component: {fileID: 5490188542962635001}
   m_Layer: 0
-  m_Name: Broom_01
+  m_Name: Broom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,7 +643,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 30701e02eefd85746acfe41cdf9dcdd7, type: 3}
+  - {fileID: 2100000, guid: b66df70192d89be40a9b2246acf10dd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -28,7 +28,6 @@ public class KnockBackHitter : MonoBehaviour
     void Update()
     {
         _circlePoint = PatrickDirection() * circleRadius;
-        
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -68,9 +67,8 @@ public class KnockBackHitter : MonoBehaviour
             }
         }
 
+        SetBroom();
         UpdateFakeGizmos();
-        broomModel.transform.localPosition = _circlePoint;
-        broomModel.transform.rotation = Quaternion.Euler(0,0, 180-Mathf.Atan2(_circlePoint.x, _circlePoint.y)*Mathf.Rad2Deg);
     }
 
     private Vector3 GetClickDirection()
@@ -90,6 +88,20 @@ public class KnockBackHitter : MonoBehaviour
         return angleOne - anglePoint > anglePoint - angleTwo ?
             new Vector3(Mathf.Sin(angleOne), Mathf.Cos(angleOne), 0) :
             new Vector3(Mathf.Sin(angleTwo), Mathf.Cos(angleTwo), 0);
+    }
+
+    private void SetBroom()
+    {
+        if (Physics.Raycast(transform.position, _circlePoint, out var hitInfo, circleRadius))
+        {
+            broomModel.transform.position = new Vector3(hitInfo.point.x,hitInfo.point.y,-0.5f);
+        }
+        else
+        {
+            broomModel.transform.localPosition = _circlePoint;
+        }
+
+        broomModel.transform.rotation = Quaternion.Euler(0,0, 180-Mathf.Atan2(_circlePoint.x, _circlePoint.y)*Mathf.Rad2Deg);
     }
 
     private void UpdateFakeGizmos()
