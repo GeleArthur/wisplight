@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DustPile : MonoBehaviour, IKnockBack
+public class DustPile : MonoBehaviour
 {
     [SerializeField] private float amount = 0;
 
-    public void Hit()
+    public void Clean()
     {
         DustManager.Singleton.RemoveDust(amount);
         Destroy(gameObject);
