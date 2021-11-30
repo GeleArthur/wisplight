@@ -58,6 +58,9 @@ public class DustManager : MonoBehaviour
 
     private void AddDust(float amount)
     {
+        if (dustRegions.Count == 0)
+            return;
+
         //make sure the amount of dust is always within the max amount
         amount = Mathf.Min(currentDust + amount, maxAmountOfDust) - currentDust;
         //create dustpiles till there is no dust left to add
