@@ -22,6 +22,7 @@ public class KnockBackHitter : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
