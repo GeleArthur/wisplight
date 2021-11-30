@@ -20,7 +20,6 @@ public class DustRegion : MonoBehaviour
     {
         Vector3 randomPosition = transform.position + bounds.GetRandomPoint();
         float distance = randomPosition.y - (transform.position.y + bounds.center.y - bounds.extents.y);
-        Debug.Log(distance);
         RaycastHit hit;
         if(Physics.Raycast(randomPosition, Vector3.down, out hit, distance))
         {
