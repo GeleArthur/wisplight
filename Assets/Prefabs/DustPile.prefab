@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5027710805982603501}
   - component: {fileID: 5027710805982603500}
   - component: {fileID: 5027710805982603503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DustPile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e270de916290c6644941220037c1e912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 0
