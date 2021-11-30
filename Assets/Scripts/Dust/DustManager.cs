@@ -47,7 +47,7 @@ public class DustManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddDust(maxAmountOfDust / 4f);
+        AddDust(maxAmountOfDust);
     }
 
     // Update is called once per frame
