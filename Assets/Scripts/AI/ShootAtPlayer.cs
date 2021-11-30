@@ -32,8 +32,9 @@ public class ShootAtPlayer : MonoBehaviour
     [Header("Box check settings")] 
     [SerializeField] private Vector3 boxRadius;
     [SerializeField] private Vector3 boxOffset;
-    
-    [Header("Shooting settings")]
+
+    [Header("Shooting settings")] 
+    [SerializeField] private LayerMask playerMask;
     [SerializeField] private float spawnDist;
     [SerializeField] private float shootingSpeed;
     [SerializeField] private bool resetTimerOutsideRadius = true;
@@ -107,7 +108,9 @@ public class ShootAtPlayer : MonoBehaviour
 
     private bool InsideBoxRadius()
     {
-        return Physics.CheckBox(transform.position + boxOffset, boxRadius * 0.5f);
+        bool inDist = Physics.CheckBox(transform.position + boxOffset, boxRadius * 0.5f, Quaternion.identity, playerMask);
+        r.material.color = inDist ? inDistanceColor : defaultColor;
+        return inDist;
     }
     #endregion
 
@@ -138,6 +141,7 @@ public class ShootAtPlayer : MonoBehaviour
             {
                 case CheckState.BoxCheck:
                     Gizmos.DrawWireCube(transform.position + boxOffset, boxRadius);
+                    if(player == null) return; 
                     Handles.color = InsideBoxRadius() ? Color.red : Color.white;
                     break;
                 case CheckState.CircleCheck:
