@@ -58,7 +58,7 @@ public class ShootAtPlayer : MonoBehaviour
         r = GetComponent<Renderer>();
         defaultColor = r.material.color;
         
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     void Update()

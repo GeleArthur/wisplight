@@ -331,8 +331,10 @@ GameObject:
   - component: {fileID: 199157252916738297}
   - component: {fileID: 199157252916738293}
   - component: {fileID: 199157252916738294}
+  - component: {fileID: 1693920838}
   - component: {fileID: 199157252916738295}
   - component: {fileID: 1242510543}
+  - component: {fileID: 6965922001105172934}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -409,6 +411,21 @@ MonoBehaviour:
   jumpMultiplier: 22
   airAcceleration: 2000
   characterModel: {fileID: 3189904844586881069}
+--- !u!114 &1693920838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199157252916738296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9523ac30fcf34e588bc1d8d4fc5d2ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broomPoint: {x: 0, y: 0, z: 0}
+  circleRadius: 2.44
+  broomModel: {fileID: 7663580493863018608}
 --- !u!114 &199157252916738295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,14 +438,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e40dcc4fca3e55419bb9e3bc17451b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _circlePoint: {x: 0, y: 0, z: 0}
   circlePointGm: {fileID: 467620763}
   circleStrokeGm: {fileID: 923017801}
-  circleRadius: 2.44
   hitAngles: 16
   forceMultiplayer: 20
   waitTimeMilliseconds: 100
-  broomModel: {fileID: 7663580493863018608}
 --- !u!114 &1242510543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +458,18 @@ MonoBehaviour:
   range: 2.5
   noAngleRange: 1
   maxAngle: 90
+--- !u!114 &6965922001105172934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199157252916738296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7d099ce9264c90ac1b3bff771d2f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &199157253117392057
 GameObject:
   m_ObjectHideFlags: 0
