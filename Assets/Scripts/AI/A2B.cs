@@ -50,10 +50,14 @@ public class A2B : MonoBehaviour
             if (_time >= 1f) _time = 0;
         }
 
-    } 
+    }
+
     //rb.velocity = Vector3.Lerp(rb.velocity, movementDirection, friction);
+#if UNITY_EDITOR
+    
     private void OnDrawGizmos()
     {
         Handles.DrawWireDisc(transform.position, Vector3.forward, reachedDestinationDist);
     }
+#endif
 }

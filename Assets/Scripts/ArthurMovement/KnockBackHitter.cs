@@ -28,6 +28,7 @@ public class KnockBackHitter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            _broomMover.BroomHit();
             _timeUntilClick = DateTime.Now.Ticks + waitTimeMilliseconds * TimeSpan.TicksPerMillisecond;
         }
 

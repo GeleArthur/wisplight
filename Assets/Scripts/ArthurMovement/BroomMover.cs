@@ -3,6 +3,9 @@
 
 public class BroomMover : MonoBehaviour
 {
+    public float _broomReduced = 0;
+    public float timerSUTFF;
+    
     public Vector3 broomPoint = Vector3.zero;
     public float circleRadius = 2.44f;
     public GameObject broomModel;
@@ -10,6 +13,7 @@ public class BroomMover : MonoBehaviour
     void Update()
     {
         broomPoint = PatrickDirection() * circleRadius;
+        _broomReduced = Mathf.MoveTowards(_broomReduced, 0, timerSUTFF * Time.deltaTime);
         SetBroom();
     }
 
@@ -23,25 +27,29 @@ public class BroomMover : MonoBehaviour
         float tAngle = Vector2.SignedAngle(Vector2.up, dir);
         float cAngle = Vector2.SignedAngle(Vector2.up, broomPoint.normalized);
         float rAngle = Mathf.MoveTowardsAngle(cAngle, tAngle, speed * 10f);
-        //if(speed > 0)
-        // Debug.Log($"{tAngle}");
-        /*{cAngle} => {tAngle} = {rAngle} */
         return Quaternion.Euler(0f, 0f, rAngle) * Vector3.up;
     }
 
     private void SetBroom()
     {
+        Vector3 broomLocalPos;
         if (Physics.Raycast(transform.position, broomPoint, out var hitInfo, circleRadius))
         {
-            broomModel.transform.position = new Vector3(hitInfo.point.x,hitInfo.point.y,-0.5f);
+            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, -0.5f));
         }
         else
         {
-            broomModel.transform.localPosition = broomPoint;
+            broomLocalPos = broomPoint;
         }
 
+        broomLocalPos = broomLocalPos.normalized * (broomLocalPos.magnitude + _broomReduced);
+        
+        broomModel.transform.localPosition = broomLocalPos;
         broomModel.transform.rotation = Quaternion.Euler(0,0, 180-Mathf.Atan2(broomPoint.x, broomPoint.y)*Mathf.Rad2Deg);
     }
-    
-    
+
+    public void BroomHit()
+    {
+        _broomReduced = 1;
+    }
 }

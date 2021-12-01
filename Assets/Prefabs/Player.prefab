@@ -423,6 +423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9523ac30fcf34e588bc1d8d4fc5d2ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _broomReduced: 0
+  timerSUTFF: 15
   broomPoint: {x: 0, y: 0, z: 0}
   circleRadius: 2.44
   broomModel: {fileID: 7663580493863018608}

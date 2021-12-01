@@ -132,7 +132,7 @@ public class ShootAtPlayer : MonoBehaviour
     
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if(r == null) r = GetComponent<Renderer>();
 

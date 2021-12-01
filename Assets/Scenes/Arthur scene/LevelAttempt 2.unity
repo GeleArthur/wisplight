@@ -4925,8 +4925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1f8ae934715364fbb1915a69963d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfDustInPile: {x: 1, y: 5}
-  maxAmountOfDust: 1000
+  amountOfDustInPile: {x: 1, y: 50}
+  maxAmountOfDust: 10000
 --- !u!4 &1255531939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 53a7189847ab7a249a4fb1aef3170794, type: 3}

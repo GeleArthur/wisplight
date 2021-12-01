@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Arthur scene/PlayerMove.unity
-    guid: fbe24b61564704342b6ebbb0ff40f13e
+    path: Assets/Scenes/Jari scenes/Jari.unity
+    guid: ab742affc2212674b825711d9118734e
   m_configObjects: {}
