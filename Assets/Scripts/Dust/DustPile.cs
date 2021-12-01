@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DustPile : MonoBehaviour
+public class DustPile : MonoBehaviour, DustCleanedInterface
 {
     [SerializeField] private float amount = 0;
     [SerializeField] private float offset = 0.5f;
@@ -12,14 +12,14 @@ public class DustPile : MonoBehaviour
         transform.position += transform.up * offset;
     }
 
-    public void Clean()
-    {
-        DustManager.Singleton.RemoveDust(amount);
-        Destroy(gameObject);
-    }
-
     public void SetAmount(float newAmount)
     {
         amount = newAmount;
+    }
+
+    public void Cleaned()
+    {
+        DustManager.Singleton.RemoveDust(amount);
+        Destroy(gameObject);
     }
 }
