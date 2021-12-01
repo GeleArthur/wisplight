@@ -105,6 +105,8 @@ public class KnockBackHitter : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        if(_broomMover == null) _broomMover = GetComponent<BroomMover>();
+
         var clickDirectionGiz = GetClickDirection();
         if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, _broomMover.circleRadius))
         {

@@ -101,7 +101,7 @@ public class ShootAtPlayer : MonoBehaviour
         dist = Vector2.Distance(player.position, transform.position + circleOffset);
         bool inDist = dist < circleRadius;
 
-        r.material.color = inDist ? inDistanceColor : defaultColor;
+        r.sharedMaterial.color = inDist ? inDistanceColor : defaultColor;
 
         return inDist;
     }
@@ -134,6 +134,7 @@ public class ShootAtPlayer : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        if(r == null) r = GetComponent<Renderer>();
 
         if (enableGizmos)
         {

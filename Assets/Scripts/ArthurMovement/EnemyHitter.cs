@@ -17,8 +17,6 @@ public class EnemyHitter : MonoBehaviour
         {
             if (Physics.SphereCast(transform.position, 1f, _broomMover.broomPoint, out var hitInfo, _broomMover.circleRadius))
             {
-                Debug.Log("WAK");
-
                 var knockHit = hitInfo.transform.GetComponent<IKnockBack>();
 
                 if (knockHit != null)
