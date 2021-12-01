@@ -53,7 +53,7 @@ public class KnockBackHitter : MonoBehaviour
                 float x = 0;
                 if (_rigidbody.velocity.x > 0 && force.x > 0 ||
                     _rigidbody.velocity.x < 0 && force.x < 0 ||
-                    Mathf.Abs(force.x) < 0.000000001f
+                    Mathf.Abs(force.x) < 0.001f
                 )
                 {
                     x = _rigidbody.velocity.x;
