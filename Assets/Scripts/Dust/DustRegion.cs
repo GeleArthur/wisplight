@@ -22,7 +22,7 @@ public class DustRegion : MonoBehaviour
         Vector3 randomPosition = transform.position + bounds.GetRandomPoint();
         float distance = randomPosition.y - (transform.position.y + bounds.center.y - bounds.extents.y);
         RaycastHit hit;
-        if (Physics.Raycast(randomPosition, Vector3.down, out hit, distance))
+        if (Physics.Raycast(randomPosition, Vector3.down, out hit, distance, ~(1 << 8), QueryTriggerInteraction.UseGlobal))
         {
             Quaternion rot = Quaternion.LookRotation(Vector3.forward, hit.normal);
             Instantiate(dustPrefab, hit.point, rot, transform).GetComponent<DustPile>().SetAmount(amount);

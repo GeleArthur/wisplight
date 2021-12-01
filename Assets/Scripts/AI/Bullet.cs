@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour, IKnockBack
     public void Hit()
     {
         //if the player hits the bullet it will have to fly to the pointing direction
-        var playerKnockback = GameObject.Find("Player").GetComponent<KnockBackHitter>();
-        dir = playerKnockback._circlePoint;
+        var playerKnockback = GameObject.Find("Player").GetComponent<BroomMover>();
+        dir = playerKnockback.broomPoint;
     }
 }

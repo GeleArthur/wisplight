@@ -6,31 +6,29 @@ using UnityEngine;
 
 public class KnockBackHitter : MonoBehaviour
 {
-    public Vector3 _circlePoint = Vector3.zero;
+    private BroomMover _broomMover;
     private Vector3 _clickDirection;
     private Rigidbody _rigidbody;
     private long _timeUntilClick;
     public GameObject circlePointGm;
     public GameObject circleStrokeGm;
     
-    public float circleRadius = 5;
-    public int hitAngles = 4;
+    public int hitAngles = 16;
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
-    public GameObject broomModel;
 
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _broomMover = GetComponent<BroomMover>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        _circlePoint = PatrickDirection() * circleRadius;
-
         if (Input.GetMouseButtonDown(0))
         {
+            _broomMover.BroomHit();
             _timeUntilClick = DateTime.Now.Ticks + waitTimeMilliseconds * TimeSpan.TicksPerMillisecond;
         }
 
@@ -38,9 +36,9 @@ public class KnockBackHitter : MonoBehaviour
         {
             _clickDirection = GetClickDirection();
             
-            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, circleRadius))
+            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, _broomMover.circleRadius))
             {
-                _timeUntilClick = DateTime.Now.Ticks;
+                _timeUntilClick = 0;
 
                 IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
                 if (specialHit != null)
@@ -66,15 +64,14 @@ public class KnockBackHitter : MonoBehaviour
                 _rigidbody.velocity = force;
             }
         }
-
-        SetBroom();
+        
         UpdateFakeGizmos();
     }
 
     private Vector3 GetClickDirection()
     {
         // Calculate the angle of the point
-        float anglePoint = Mathf.Atan2(_circlePoint.x, _circlePoint.y);
+        float anglePoint = Mathf.Atan2(_broomMover.broomPoint.x, _broomMover.broomPoint.y);
         // Calculate how large one piece of the circle pie
         float oneAngle = Mathf.PI * 2 / hitAngles;
         // Calculate what line on the circle
@@ -90,25 +87,11 @@ public class KnockBackHitter : MonoBehaviour
             new Vector3(Mathf.Sin(angleTwo), Mathf.Cos(angleTwo), 0);
     }
 
-    private void SetBroom()
-    {
-        if (Physics.Raycast(transform.position, _circlePoint, out var hitInfo, circleRadius))
-        {
-            broomModel.transform.position = new Vector3(hitInfo.point.x,hitInfo.point.y,-0.5f);
-        }
-        else
-        {
-            broomModel.transform.localPosition = _circlePoint;
-        }
-
-        broomModel.transform.rotation = Quaternion.Euler(0,0, 180-Mathf.Atan2(_circlePoint.x, _circlePoint.y)*Mathf.Rad2Deg);
-    }
-
     private void UpdateFakeGizmos()
     {
-        circlePointGm.transform.localPosition = _circlePoint;
+        circlePointGm.transform.localPosition = _broomMover.broomPoint;
         Vector3 clickDirectionGiz = GetClickDirection();
-        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, circleRadius))
+        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, _broomMover.circleRadius))
         {
             circlePointGm.GetComponent<MeshRenderer>().material.color = Input.GetMouseButton(0) ? Color.red : Color.green;
             circleStrokeGm.GetComponent<MeshRenderer>().material.color = Input.GetMouseButton(0) ? Color.red : Color.green;
@@ -120,42 +103,19 @@ public class KnockBackHitter : MonoBehaviour
         }
     }
 
-
-    private Vector3 PatrickDirection()
-    {
-        Vector2 dir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        if (Application.platform == RuntimePlatform.WebGLPlayer) dir *= 0.1f;
-
-        float speed = dir.magnitude;
-        dir.Normalize();
-        float tAngle = Vector2.SignedAngle(Vector2.up, dir);
-        float cAngle = Vector2.SignedAngle(Vector2.up, _circlePoint.normalized);
-        float rAngle = Mathf.MoveTowardsAngle(cAngle, tAngle, speed * 10f);
-        //if(speed > 0)
-        // Debug.Log($"{tAngle}");
-        /*{cAngle} => {tAngle} = {rAngle} */
-        return Quaternion.Euler(0f, 0f, rAngle) * Vector3.up;
-    }
-
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        if(_broomMover == null) _broomMover = GetComponent<BroomMover>();
+
         var clickDirectionGiz = GetClickDirection();
-        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, circleRadius))
+        if (Physics.Raycast(transform.position, clickDirectionGiz, out RaycastHit hitInfo, _broomMover.circleRadius))
         {
             Handles.color = Input.GetMouseButton(0) ? Color.red : Color.green;
         }
 
-        Handles.DrawSolidDisc(transform.position + _circlePoint, Vector3.back, circleRadius / 10);
-        Handles.DrawWireDisc(transform.position, Vector3.back, circleRadius, 3f);
-
-        // var oneAngle = Mathf.PI * 2 / hitAngles;
-
-        // Handles.color = Color.blue;
-        // for (int i = 0; i < hitAngles; i++)
-        // {
-        //     Handles.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sin(oneAngle*i)*circleRadius,Mathf.Cos(oneAngle*i)*circleRadius, 0));
-        // }
+        Handles.DrawSolidDisc(transform.position + _broomMover.broomPoint, Vector3.back, _broomMover.circleRadius / 10);
+        Handles.DrawWireDisc(transform.position, Vector3.back, _broomMover.circleRadius, 3f);
 
         Debug.DrawRay(transform.position, _clickDirection * 10, Color.yellow);
 

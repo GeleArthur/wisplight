@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4e7f0e0dd665d8649a08c3942d4a8e52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,12 +124,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44ed1f61b596fa49b75ab70810f1c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  radius: 6.25
+  bulletPrefab: {fileID: 3187372004176838060, guid: 4f9472bbed6d81840b2b22f9305d5f19, type: 3}
+  enableGizmos: 0
+  inDistanceColor: {r: 1, g: 0, b: 0, a: 1}
+  checkState: 1
+  circleRadius: 0
+  circleOffset: {x: 0, y: 0, z: 0}
+  boxRadius: {x: 0, y: 0, z: 0}
+  boxOffset: {x: 0, y: 0, z: 0}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 0
   spawnDist: 2
   shootingSpeed: 0.4
-  bulletPrefab: {fileID: 3187372004176838060, guid: 4f9472bbed6d81840b2b22f9305d5f19, type: 3}
-  inDistanceColor: {r: 0, g: 0, b: 0, a: 0}
+  resetTimerOutsideRadius: 1
+  player: {fileID: 0}
 --- !u!1 &5441353023512536528
 GameObject:
   m_ObjectHideFlags: 0

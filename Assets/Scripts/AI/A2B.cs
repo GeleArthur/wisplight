@@ -36,15 +36,23 @@ public class A2B : MonoBehaviour
        
     }
 
+
     private bool ToNextWaypoint(Transform dest)
     {
         if (Vector3.Distance(transform.position, dest.position) <= reachedDestinationDist) return true;
         return false;
     }
     
+
+   
+
+   
+#if UNITY_EDITOR
+
     
     private void OnDrawGizmos()
     {
         Handles.DrawWireDisc(transform.position, Vector3.forward, reachedDestinationDist);
     }
+#endif
 }
