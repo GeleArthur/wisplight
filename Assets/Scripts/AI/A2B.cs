@@ -6,52 +6,43 @@ using UnityEngine;
 
 public class A2B : MonoBehaviour
 {
-    [SerializeField] private Transform a, b;
+    [SerializeField] private Transform[] waypoints;
+    private int waypointIndex;
     [SerializeField] private float _speed;
-    float _time;
-    private bool _reverse;
     [SerializeField] private float reachedDestinationDist;
-    [SerializeField] private float friction = 0.25f;
+    
+    bool _reverse;
+    float _time;
 
     private Rigidbody rb;
 
-    private float _xInput;
-
     private void Awake()
     {
+        waypointIndex = 0;
         rb = GetComponent<Rigidbody>();
-    }
-
-    void Start()
-    {
-        _speed *= .5f;
     }
 
     private void Update()
     {
-        _xInput = Input.GetAxisRaw("Horizontal");
+        if (ToNextWaypoint(waypoints[waypointIndex]))
+        {
+            _speed = -_speed;
+            waypointIndex++;
+        }
     }
 
     void FixedUpdate()
     {
-        _time += _speed * Time.deltaTime;
-        if (_reverse == true)
-        {
-            var bDist = Vector3.Distance(transform.position, b.position);
-            transform.position = Vector3.Lerp(a.position, b.position, _time);
-            if (bDist <= reachedDestinationDist) _reverse = false;
-            if (_time >= 1f) _time = 0;
-        }
-        else
-        {
-            var bDist = Vector3.Distance(transform.position, a.position);
-            transform.position = Vector3.Lerp(b.position, a.position, _time);
-            if (bDist <= reachedDestinationDist) _reverse = true;
-            if (_time >= 1f) _time = 0;
-        }
+       
+    }
 
-    } 
-    //rb.velocity = Vector3.Lerp(rb.velocity, movementDirection, friction);
+    private bool ToNextWaypoint(Transform dest)
+    {
+        if (Vector3.Distance(transform.position, dest.position) <= reachedDestinationDist) return true;
+        return false;
+    }
+    
+    
     private void OnDrawGizmos()
     {
         Handles.DrawWireDisc(transform.position, Vector3.forward, reachedDestinationDist);
