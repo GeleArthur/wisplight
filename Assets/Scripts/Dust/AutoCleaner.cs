@@ -21,7 +21,7 @@ public class AutoCleaner : MonoBehaviour
         {
             if(Vector2.Distance(dustPiles[i].transform.position, transform.position) <= noAngleRange)
             {
-                dustPiles[i].GetComponent<DustPile>().Clean();
+                dustPiles[i].GetComponent<DustCleanedInterface>().Cleaned();
                 continue;
             }
 
@@ -29,23 +29,7 @@ public class AutoCleaner : MonoBehaviour
             float angle = Vector2.Angle(knockBackHitter._circlePoint, dirToDust);
 
             if(angle <= maxAngle / 2f)
-                dustPiles[i].GetComponent<DustPile>().Clean();
-            /*RaycastHit[] hits = Physics.RaycastAll(transform.position, (dustPiles[i].transform.position - transform.position).normalized, Vector3.Distance(transform.position, dustPiles[i].transform.position), (1 << 8 | 1 << 0));
-            Debug.Log(hits.Length);
-            for (int j = 0; j < hits.Length; j++)
-            {
-                if (hits[j].collider == dustPiles[i])
-                {
-                    dustPiles[i].GetComponent<DustPile>().Clean();
-                    break;
-                }
-
-                //if it is another dust pile co to the next in line
-                if (hits[j].transform.gameObject.layer == 8)
-                    continue;
-
-                break;
-            }*/
+                dustPiles[i].GetComponent<DustCleanedInterface>().Cleaned();
 
         }
     }
