@@ -25,7 +25,7 @@ public class DustPile : MonoBehaviour, DustCleanedInterface
             lifeLeft -= Time.deltaTime;
             transform.localScale = Vector3.one * (lifeLeft / cleanAnimationTime);
             if (lifeLeft <= 0f)
-                Destroy(this);
+                Destroy(gameObject);
         }
     }
 
