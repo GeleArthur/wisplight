@@ -2,24 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     private float _xInput;
     private Rigidbody _rigidbody;
     private GroundCheck _groundCheck;
+    private Vector3 _airDirection;
+    
     public float walkSpeed = 750;
     [Range(0,1)]
     public float friction = 0.25f;
-
-    
-    
     public float jumpPower = 3;
     public float jumpMultiplier = 1;
-
     public float airAcceleration = 6000;
-    private Vector3 _airDirection;
-    
+    public GameObject characterModel;
+
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -34,7 +34,23 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _xInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space) && _groundCheck.onGround) Jump();
+        // if (Input.GetKeyDown(KeyCode.Space) && _groundCheck.onGround) Jump();
+
+        if(characterModel == null) return;
+        if (Mathf.Abs(_rigidbody.velocity.x) < 0.01f)
+        {
+            characterModel.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if(_rigidbody.velocity.x > 0)
+        {
+            characterModel.transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        else
+        {
+            characterModel.transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        
+       
     }
 
     
@@ -63,6 +79,9 @@ public class PlayerMovement : MonoBehaviour
                     : 0f;
             _rigidbody.AddForce(_airDirection.normalized * airAcceleration);
         }
+
+        if (transform.position.y <= -10)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Jump()

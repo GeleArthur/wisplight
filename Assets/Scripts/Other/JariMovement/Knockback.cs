@@ -66,8 +66,8 @@ public class Knockback : MonoBehaviour
             
         }
     }
-    
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, dir.normalized * checkDistance);
@@ -76,6 +76,6 @@ public class Knockback : MonoBehaviour
             Gizmos.DrawSphere(WallCheck().point, 0.1f);
             Handles.DrawWireDisc(WallCheck().point, Vector3.forward, explosionRadius);
     }
-    
+#endif
     
 }

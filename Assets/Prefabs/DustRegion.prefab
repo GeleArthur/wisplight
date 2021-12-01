@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e2755293a88774e8c536d7245561f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dustPrefab: {fileID: 0}
+  dustPrefab: {fileID: 5027710805982603502, guid: 5c3ad4ad886510449aff1f5b45c975eb, type: 3}
   weight: 1
   bounds:
     m_Center: {x: 0, y: 0, z: 0}

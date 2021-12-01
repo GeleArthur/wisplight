@@ -47,7 +47,7 @@ public class DustManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddDust(maxAmountOfDust / 4f);
+        AddDust(maxAmountOfDust);
     }
 
     // Update is called once per frame
@@ -58,6 +58,9 @@ public class DustManager : MonoBehaviour
 
     private void AddDust(float amount)
     {
+        if (dustRegions.Count == 0)
+            return;
+
         //make sure the amount of dust is always within the max amount
         amount = Mathf.Min(currentDust + amount, maxAmountOfDust) - currentDust;
         //create dustpiles till there is no dust left to add
@@ -77,6 +80,8 @@ public class DustManager : MonoBehaviour
     public void RemoveDust(float amount)
     {
         currentDust -= amount;
+        if (currentDust <= 0)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     /// <summary>
