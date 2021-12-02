@@ -38,14 +38,16 @@ public class ShootAtPlayer : MonoBehaviour
     [SerializeField] private float spawnDist;
     [SerializeField] private float shootingSpeed;
     [SerializeField] private bool resetTimerOutsideRadius = true;
+    [SerializeField] private bool continueToShootOutsideRadius;
+    
+    //
+    private bool con;
 
-
-    private float dist;
     private Vector3 dir;
     private float timer;
 
-
-   
+    [SerializeField]private float scale;
+    private Vector3 defaultScale;
 
     [Space]
     [SerializeField] private Transform player;
@@ -56,9 +58,14 @@ public class ShootAtPlayer : MonoBehaviour
     private void Awake()
     {
         r = GetComponent<Renderer>();
-        defaultColor = r.material.color;
         
         player = GameObject.Find("Player").GetComponent<Transform>();
+    }
+
+    private void Start()
+    {
+        defaultColor = r.material.color;
+        defaultScale = transform.localScale;
     }
 
     void Update()
@@ -81,35 +88,58 @@ public class ShootAtPlayer : MonoBehaviour
     
     private void Check(bool checkMethod)
     {
-        if (checkMethod)
+        r.material.color = checkMethod ? inDistanceColor : defaultColor;
+
+        //Debug.Log(checkMethod);
+        //IncreaseSize(checkMethod);
+        
+        if (IncreaseSize(checkMethod, timer))
         {
+            if (continueToShootOutsideRadius) con = true;
+            else con = false;
+            
             if (timer >= 1f)
             {
                 Shoot();
                 timer = 0f;
             }
         }
+        else if (con && IncreaseSize(!checkMethod, timer) && timer >= 1f)
+        {
+            Shoot();
+            timer = 0f;
+            con = false;
+        }
         else if(resetTimerOutsideRadius)
         {
             timer = 0;
         }
     }
+
+    public bool IncreaseSize(bool check, float timer)
+    {
+        
+        //todo fix deze shit
+        if (check)
+        {
+            Debug.Log(timer);
+            transform.localScale *= timer;            
+            return true;
+        }
+        return false;
+    }
     
 
     private bool InsideCircleRadius()
     {
-        dist = Vector2.Distance(player.position, transform.position + circleOffset);
+        float dist = Vector2.Distance(player.position, transform.position + circleOffset);
         bool inDist = dist < circleRadius;
-
-        r.sharedMaterial.color = inDist ? inDistanceColor : defaultColor;
-
         return inDist;
     }
 
     private bool InsideBoxRadius()
     {
         bool inDist = Physics.CheckBox(transform.position + boxOffset, boxRadius * 0.5f, Quaternion.identity, playerMask);
-        r.material.color = inDist ? inDistanceColor : defaultColor;
         return inDist;
     }
     #endregion
