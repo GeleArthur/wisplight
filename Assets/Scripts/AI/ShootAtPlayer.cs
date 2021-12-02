@@ -70,9 +70,8 @@ public class ShootAtPlayer : MonoBehaviour
 
     void Update()
     {
-        timer += shootingSpeed * Time.deltaTime;
-        timer = Mathf.Clamp(timer, 0, 1.04f);
-        IncreaseSize();
+        Timer();
+
         dir = player.position - transform.position;
 
         switch (checkState)
@@ -86,6 +85,13 @@ public class ShootAtPlayer : MonoBehaviour
         }
     }
 
+    private void Timer()
+    {
+        timer += shootingSpeed * Time.deltaTime;
+        timer = Mathf.Clamp(timer, 0, 1.04f);
+        transform.localScale = Vector3.one + (Vector3.one * timer * .5f);
+    }
+    
     #region Check Methods
     
     private void Check(bool checkMethod)
@@ -117,12 +123,6 @@ public class ShootAtPlayer : MonoBehaviour
             timer = 0;
         }
     }
-
-    public void IncreaseSize()
-    {
-        transform.localScale = Vector3.one + (Vector3.one * timer * .5f);
-    }
-    
 
     private bool InsideCircleRadius()
     {
