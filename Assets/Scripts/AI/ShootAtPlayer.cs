@@ -71,6 +71,8 @@ public class ShootAtPlayer : MonoBehaviour
     void Update()
     {
         timer += shootingSpeed * Time.deltaTime;
+        timer = Mathf.Clamp(timer, 0, 1.04f);
+        IncreaseSize();
         dir = player.position - transform.position;
 
         switch (checkState)
@@ -93,7 +95,7 @@ public class ShootAtPlayer : MonoBehaviour
         //Debug.Log(checkMethod);
         //IncreaseSize(checkMethod);
         
-        if (IncreaseSize(checkMethod, timer))
+        if (checkMethod/*IncreaseSize(checkMethod, timer)*/)
         {
             if (continueToShootOutsideRadius) con = true;
             else con = false;
@@ -104,7 +106,7 @@ public class ShootAtPlayer : MonoBehaviour
                 timer = 0f;
             }
         }
-        else if (con && IncreaseSize(!checkMethod, timer) && timer >= 1f)
+        else if (con && timer >= 1f)
         {
             Shoot();
             timer = 0f;
@@ -116,17 +118,9 @@ public class ShootAtPlayer : MonoBehaviour
         }
     }
 
-    public bool IncreaseSize(bool check, float timer)
+    public void IncreaseSize()
     {
-        
-        //todo fix deze shit
-        if (check)
-        {
-            Debug.Log(timer);
-            transform.localScale *= timer;            
-            return true;
-        }
-        return false;
+        transform.localScale = Vector3.one + (Vector3.one * timer * .5f);
     }
     
 
