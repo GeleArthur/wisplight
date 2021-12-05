@@ -96,12 +96,9 @@ public class ShootAtPlayer : MonoBehaviour
     
     private void Check(bool checkMethod)
     {
-        r.material.color = checkMethod ? inDistanceColor : defaultColor;
-
-        //Debug.Log(checkMethod);
-        //IncreaseSize(checkMethod);
+        r.material.color = checkMethod || con ? inDistanceColor : defaultColor;
         
-        if (checkMethod/*IncreaseSize(checkMethod, timer)*/)
+        if (checkMethod)
         {
             if (continueToShootOutsideRadius) con = true;
             else con = false;
