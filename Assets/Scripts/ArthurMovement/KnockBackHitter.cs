@@ -43,7 +43,8 @@ public class KnockBackHitter : MonoBehaviour
                 IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
                 if (specialHit != null)
                 {
-                    specialHit.Hit();
+                    
+                    _rigidbody.velocity = specialHit.Hit();
                     return;
                 }
 
