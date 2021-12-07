@@ -19,8 +19,8 @@ public class InterfaceInspector : Editor
             if (showInterfaces)
             {
                 EditorGUILayout.LabelField("IKnockBack");
-                if (GUILayout.Button("Hit"))
-                    myTarget.Hit();
+                // if (GUILayout.Button("Hit"))
+                    // myTarget.Hit();
             }
         }
         

@@ -7,11 +7,10 @@ public class Health : MonoBehaviour, IKnockBack
     public int health;
     [SerializeField] private int damageAmount;
         
-    public Vector3 Hit()
+    public void Hit()
     {
         health -= damageAmount;
         if (health <= 0) Die();
-        return Vector3.zero;
     }
 
     private void Die()

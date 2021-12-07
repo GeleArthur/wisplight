@@ -13,6 +13,8 @@ public class DustPile : MonoBehaviour, DustCleanedInterface
     private float lifeLeft = 0f;
     private bool cleaned = false;
 
+    private Material dustMat = null;
+
     private void Awake()
     {
 
@@ -23,7 +25,8 @@ public class DustPile : MonoBehaviour, DustCleanedInterface
         if (cleaned)
         {
             lifeLeft -= Time.deltaTime;
-            transform.localScale = Vector3.one * (lifeLeft / cleanAnimationTime);
+            //transform.localScale = Vector3.one * (lifeLeft / cleanAnimationTime);
+            dustMat.SetFloat("_Materialised", lifeLeft / cleanAnimationTime);
             if (lifeLeft <= 0f)
                 Destroy(gameObject);
         }
@@ -38,6 +41,7 @@ public class DustPile : MonoBehaviour, DustCleanedInterface
         float dustPerModel = maxDust / models.Length;
         int thing = Mathf.FloorToInt(amount / dustPerModel);
         models[thing].SetActive(true);
+        dustMat = models[thing].GetComponent<Renderer>().material;
     }
 
     public void Cleaned()

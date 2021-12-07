@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DustMat
+  m_Shader: {fileID: -6465566751694194690, guid: defb3e0cab58f274a9594caf87b57d9f, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_b4b10ec3bd94475f926bc44d03a3e604:
+        m_Texture: {fileID: 2800000, guid: 5db84f5b1f55488409cfea919a44163e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_Texture_1:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_066227f436924597a57b9f8b7b246b35: 1
+    - Vector1_2f1e1aa506e142199a64d07139b44a85: 10
+    - Vector1_6143018700ad4236ae154b2d19051c02: 5
+    - Vector1_b508357b1e0b4ebfae0a54a8a1d8153c: 0.2
+    - Vector1_d7448e8c4bfe4629a845c4b4cf37f445: 0.65
+    - Vector1_eee1783ae5744fb3b3f1036218fe3bdb: 0.05
+    - _Materialised: 1
+    m_Colors:
+    - Color_f24be94f3f7140f2b052f1ea234c3ffb: {r: 11.984314, g: 11.984314, b: 11.984314, a: 1}
+  m_BuildTextureStacks: []

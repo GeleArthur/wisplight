@@ -36,15 +36,14 @@ public class KnockBackHitter : MonoBehaviour
         {
             _clickDirection = GetClickDirection();
             
-            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, _broomMover.circleRadius))
+            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, _broomMover.circleRadius, _broomMover.hitLayerMask))
             {
                 _timeUntilClick = 0;
-
+                
                 IKnockBack specialHit = hitInfo.transform.GetComponent<IKnockBack>();
                 if (specialHit != null)
                 {
-                    
-                    _rigidbody.velocity = specialHit.Hit();
+                    // specialHit.Hit();
                     return;
                 }
 
