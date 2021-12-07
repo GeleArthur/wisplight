@@ -39,7 +39,7 @@ public class BroomMover : MonoBehaviour
         }
         else
         {
-            broomLocalPos = broomPoint;
+            broomLocalPos = new Vector3(broomPoint.x, broomPoint.y, -0.5f);
         }
 
         broomLocalPos = broomLocalPos.normalized * (broomLocalPos.magnitude + _broomReduced);

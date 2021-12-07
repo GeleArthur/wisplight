@@ -6,6 +6,5 @@ public class NoJump : MonoBehaviour, IKnockBack
 {
     public void Hit()
     {
-        
     }
 }
