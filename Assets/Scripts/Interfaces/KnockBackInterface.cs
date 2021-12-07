@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IKnockBack
 {
-    public Vector3 Hit();
+    public void Hit();
 }
