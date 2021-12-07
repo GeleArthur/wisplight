@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngle: 45
+  upsideDown: 0
 --- !u!64 &7653885
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2805,6 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngle: 45
+  upsideDown: 0
 --- !u!64 &133770178
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27045,46 +27047,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1367367151, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: field of view
-      value: 73
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.6389997
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -11.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9912589
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.13193062
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367367152, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 15.162
-      objectReference: {fileID: 0}
-    - target: {fileID: 1797493730, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1797493730, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -11.28
-      objectReference: {fileID: 0}
     - target: {fileID: 199157252916738292, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -46510,6 +46472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngle: 45
+  upsideDown: 0
 --- !u!64 &2034496720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46823,6 +46786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngle: 45
+  upsideDown: 0
 --- !u!64 &2040507209
 MeshCollider:
   m_ObjectHideFlags: 0
