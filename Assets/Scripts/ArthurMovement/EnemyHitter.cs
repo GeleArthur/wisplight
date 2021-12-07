@@ -15,7 +15,7 @@ public class EnemyHitter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.SphereCast(transform.position, 0.1f, _broomMover.broomPoint, out var hitInfo, _broomMover.circleRadius))
+            if (Physics.SphereCast(transform.position, 0.1f, _broomMover.broomPoint, out var hitInfo, _broomMover.circleRadius, _broomMover.hitLayerMask))
             {
                 var knockHit = hitInfo.transform.GetComponent<IKnockBack>();
 

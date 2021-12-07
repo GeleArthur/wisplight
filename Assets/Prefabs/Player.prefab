@@ -462,6 +462,9 @@ MonoBehaviour:
   broomPoint: {x: 0, y: 0, z: 0}
   circleRadius: 2.44
   broomModel: {fileID: 7663580493863018608}
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 311
 --- !u!114 &199157252916738295
 MonoBehaviour:
   m_ObjectHideFlags: 0
