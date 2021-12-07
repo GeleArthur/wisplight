@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PP Volume Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 4523134738994393409}
---- !u!114 &4523134738994393409
+  - {fileID: 2059784587106042506}
+--- !u!114 &2059784587106042506
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
