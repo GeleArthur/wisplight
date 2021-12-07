@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 467620764}
   - component: {fileID: 467620767}
   - component: {fileID: 467620766}
-  m_Layer: 1
+  m_Layer: 3
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 923017802}
   - component: {fileID: 923017805}
   - component: {fileID: 923017804}
-  m_Layer: 1
+  m_Layer: 3
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 1367367151}
   - component: {fileID: 1367367150}
   - component: {fileID: 7861383180063904548}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -204,8 +204,8 @@ Camera:
   m_GameObject: {fileID: 1367367149}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5294118, g: 0.46821865, b: 0.3764706, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797493730}
   - component: {fileID: 1797493732}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Main Camera (1)
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 199157252916738295}
   - component: {fileID: 1242510543}
   - component: {fileID: 6965922001105172934}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 199157253117392058}
   - component: {fileID: 199157253117392059}
   - component: {fileID: 199157253117392052}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 413008486495364827}
   - component: {fileID: 3784528008631173609}
   - component: {fileID: 8320085872515015503}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 5833223903964192246}
   - component: {fileID: 2121287884445967657}
   - component: {fileID: 5490188542962635001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Broom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
