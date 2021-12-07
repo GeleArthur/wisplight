@@ -115,10 +115,6 @@ public class ShootAtPlayer : MonoBehaviour
             timer = 0f;
             con = false;
         }
-        else if(resetTimerOutsideRadius)
-        {
-            timer = 0;
-        }
     }
 
     private bool InsideCircleRadius()
