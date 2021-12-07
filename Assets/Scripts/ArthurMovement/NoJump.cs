@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class NoJump : MonoBehaviour, IKnockBack
 {
-    public Vector3 Hit()
+    public void Hit()
     {
-        return Vector3.zero;
     }
 }
