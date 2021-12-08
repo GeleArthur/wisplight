@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -20,6 +21,10 @@ public class StateMachine : MonoBehaviour
         bool inDist = Physics.CheckBox(boxOffset, boxRadius * 0.5f, Quaternion.identity, layerMask);
         return inDist;
     }
+
+   
+    
+    
     
 }
 

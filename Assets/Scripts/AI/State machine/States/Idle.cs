@@ -9,11 +9,13 @@ using UnityEngine;
         public override void EnterState()
         {
             Debug.Log(1);
+
         }
 
         public override void Update()
         {
-            if (enemyBehaviour.InsideBoxRadius(enemyBehaviour.boxOffset, enemyBehaviour.boxRadius, enemyBehaviour.playerMask))
+            enemyBehaviour.IsWebActive(true);
+            if (enemyBehaviour.PlayerInSight(enemyBehaviour.checkAmount))
             {
                 enemyBehaviour.SwitchState(new Attack(enemyBehaviour));
             }

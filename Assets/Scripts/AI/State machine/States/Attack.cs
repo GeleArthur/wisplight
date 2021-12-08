@@ -10,12 +10,12 @@ using UnityEngine;
         public override void EnterState()
         {
             Debug.Log(2);
-            enemyBehaviour.StartCoroutine(Drop());
+            enemyBehaviour.StartCoroutine(AttackBuildUp());
         }
 
         public override void Update()
         {
-           
+           enemyBehaviour.IsWebActive(false);
         }
 
         IEnumerator Drop()
@@ -31,5 +31,15 @@ using UnityEngine;
             enemyBehaviour.SwitchState(new Restart(enemyBehaviour));
         }
 
+        IEnumerator AttackBuildUp()
+        {
+            Vector3 dir = enemyBehaviour.player.position - enemyBehaviour.transform.position;
+            enemyBehaviour.rb.AddForce(dir.normalized * 1000);
+            //enemyBehaviour.joint.anchor = new Vector3(0, -1, 0);
+            yield return new WaitForSeconds(.5f);
+            enemyBehaviour.StartCoroutine(Drop());
+            yield break;
+        }
        
+        
     }
