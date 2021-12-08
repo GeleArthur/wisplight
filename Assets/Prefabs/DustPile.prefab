@@ -181,6 +181,10 @@ PrefabInstance:
       value: Dustpile_02
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d1b7403a434b037479b0194b3eabec57, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1b7403a434b037479b0194b3eabec57, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -254,6 +258,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 073ef0a678f84824d876c7eb975aaead, type: 3}
       propertyPath: m_Name
       value: Dustpile_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 073ef0a678f84824d876c7eb975aaead, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 073ef0a678f84824d876c7eb975aaead, type: 3}
       propertyPath: m_IsActive
@@ -331,6 +339,10 @@ PrefabInstance:
       value: Dustpile_04
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b660d8ac4988b854ea3f3f65fe30a4e8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b660d8ac4988b854ea3f3f65fe30a4e8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -404,6 +416,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 869981a4b0a92734fbbd4af0d81829a0, type: 3}
       propertyPath: m_Name
       value: Dustpile_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 869981a4b0a92734fbbd4af0d81829a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 869981a4b0a92734fbbd4af0d81829a0, type: 3}
       propertyPath: m_IsActive
