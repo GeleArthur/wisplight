@@ -27,8 +27,6 @@ public class EnemyBehaviour : StateMachine
         private Attack _attack;
         private Restart _restart;
 
-
-        public readonly float anchorDefault = 1.4f;
         [HideInInspector] public LineRenderer lineRenderer;
         
         public EnemyBehaviour()

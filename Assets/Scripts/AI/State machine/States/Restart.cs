@@ -11,7 +11,6 @@ using UnityEngine;
             Debug.Log(3);
             enemyBehaviour.rb.AddForce(Vector3.up);
             enemyBehaviour.joint.maxDistance = 0;
-            enemyBehaviour.joint.anchor = new Vector3(0, enemyBehaviour.anchorDefault, 0);
             enemyBehaviour.NewWebLocation(50);
             enemyBehaviour.StartCoroutine(ToIdle());
         }
