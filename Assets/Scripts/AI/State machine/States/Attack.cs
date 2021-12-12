@@ -25,7 +25,7 @@ using UnityEngine;
             enemyBehaviour.rb.velocity = Vector3.zero;
             
             var dir = enemyBehaviour.player.position - enemyBehaviour.transform.position;
-            enemyBehaviour.rb.velocity = dir * enemyBehaviour.toPlayerForce;
+            enemyBehaviour.rb.velocity = dir.normalized * enemyBehaviour.toPlayerForce;
             
             yield return new WaitForSeconds(2f);
             enemyBehaviour.SwitchState(new Restart(enemyBehaviour));
