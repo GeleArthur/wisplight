@@ -8,7 +8,6 @@ using UnityEngine;
 
         public override void EnterState()
         {
-            Debug.Log(3);
             enemyBehaviour.rb.AddForce(Vector3.up);
             enemyBehaviour.joint.maxDistance = 0;
             enemyBehaviour.NewWebLocation(50);

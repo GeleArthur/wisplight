@@ -9,7 +9,6 @@ using UnityEngine;
         
         public override void EnterState()
         {
-            Debug.Log(2);
             enemyBehaviour.StartCoroutine(AttackBuildUp());
         }
 

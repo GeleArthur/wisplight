@@ -98,9 +98,11 @@ public class EnemyBehaviour : StateMachine
                 }
             }
             
-            int randomPoint = Random.Range(0, hitLocations.Count);
+            int randomPoint = Random.Range(0, hitLocations.Count - 1);
+            Debug.Log(hitLocations.Count);
+            Debug.Log(randomPoint);
             Vector3 hitPos = hitLocations[randomPoint];
-        
+            
             webOrigin.position = hitPos;
             
         }

@@ -7,10 +7,7 @@ using UnityEngine;
         public Idle(EnemyBehaviour enemyBehaviour) : base(enemyBehaviour) { }
 
         public override void EnterState()
-        {
-            Debug.Log(1);
-
-        }
+        { }
 
         public override void Update()
         {
