@@ -17,7 +17,7 @@ public class ShadowProjector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.SphereCast(player.position, 0.5f, Vector3.down, out var hitInfo, Single.MaxValue, layers))
+        if (Physics.Raycast(player.position, Vector3.down, out var hitInfo, Single.MaxValue, layers))
         {
             transform.position = hitInfo.point - new Vector3(0, 4, 0);
         }

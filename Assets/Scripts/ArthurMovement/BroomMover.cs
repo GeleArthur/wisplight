@@ -37,7 +37,7 @@ public class BroomMover : MonoBehaviour
         Vector3 broomLocalPos;
         if (Physics.Raycast(transform.position, broomPoint, out var hitInfo, circleRadius, hitLayerMask))
         {
-            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, -0.5f));
+            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, hitInfo.point.z-0.5f));
         }
         else
         {
