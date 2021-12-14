@@ -5,7 +5,7 @@ public class BroomMover : MonoBehaviour
 {
     private float _broomReduced = 0;
     [SerializeField] private float reduceSpeed = 15;
-    
+
     public Vector3 broomPoint = Vector3.zero;
     public float circleRadius = 2.44f;
     public float holdRadius = 1.5f;
@@ -14,9 +14,18 @@ public class BroomMover : MonoBehaviour
     public LayerMask hitLayerMask;
     public bool broomEnabled = true;
 
+    void Awake()
+    {
+        if (!broomEnabled)
+            broomModel.SetActive(false);
+
+        broomPoint = Vector3.down * circleRadius;
+        SetBroom();
+    }
+
     void Update()
     {
-        if(broomEnabled == false) return;
+        if (broomEnabled == false) return;
         broomPoint = PatrickDirection() * circleRadius;
         _broomReduced = Mathf.MoveTowards(_broomReduced, 0, reduceSpeed * Time.deltaTime);
         SetBroom();
@@ -40,7 +49,7 @@ public class BroomMover : MonoBehaviour
         Vector3 broomLocalPos;
         if (Physics.Raycast(transform.position, broomPoint, out var hitInfo, circleRadius, hitLayerMask))
         {
-            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, transform.position.z-0.5f));
+            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, transform.position.z - 0.5f));
         }
         else
         {
@@ -49,12 +58,12 @@ public class BroomMover : MonoBehaviour
         }
 
         broomLocalPos = broomLocalPos.normalized * (broomLocalPos.magnitude + _broomReduced);
-        
+
         broomModel.transform.localPosition = broomLocalPos;
-        broomModel.transform.rotation = Quaternion.Euler(0,0, 180-Mathf.Atan2(broomPoint.x, broomPoint.y)*Mathf.Rad2Deg);
+        broomModel.transform.rotation = Quaternion.Euler(0, 0, 180 - Mathf.Atan2(broomPoint.x, broomPoint.y) * Mathf.Rad2Deg);
     }
 
-    
+
     public void ToggleBroom()
     {
         if (broomEnabled == true)
