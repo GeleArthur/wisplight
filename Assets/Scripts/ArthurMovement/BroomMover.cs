@@ -8,6 +8,7 @@ public class BroomMover : MonoBehaviour
     
     public Vector3 broomPoint = Vector3.zero;
     public float circleRadius = 2.44f;
+    public float holdRadius = 1.5f;
     public GameObject broomModel;
 
     public LayerMask hitLayerMask;
@@ -39,11 +40,12 @@ public class BroomMover : MonoBehaviour
         Vector3 broomLocalPos;
         if (Physics.Raycast(transform.position, broomPoint, out var hitInfo, circleRadius, hitLayerMask))
         {
-            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, -0.5f));
+            broomLocalPos = transform.InverseTransformPoint(new Vector3(hitInfo.point.x, hitInfo.point.y, transform.position.z-0.5f));
         }
         else
         {
-            broomLocalPos = new Vector3(broomPoint.x, broomPoint.y, -0.5f);
+            var holdBroom = broomPoint.normalized * holdRadius;
+            broomLocalPos = new Vector3(holdBroom.x, holdBroom.y, -0.5f);
         }
 
         broomLocalPos = broomLocalPos.normalized * (broomLocalPos.magnitude + _broomReduced);
