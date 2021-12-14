@@ -26,7 +26,7 @@ public class DustRegion : MonoBehaviour
         {
             Quaternion rot = Quaternion.LookRotation(Vector3.forward, hit.normal);
             BoxCollider boxCollider = dustPrefab.GetComponent<BoxCollider>();
-            if (Physics.OverlapBox(hit.point + boxCollider.center, boxCollider.size / 2f, rot, ~(1 << 8)).Length == 0)
+            if (Physics.OverlapBox(hit.point + boxCollider.center, boxCollider.size * .75f, rot, ~(1 << 8)).Length == 0)
                 Instantiate(dustPrefab, hit.point, rot, transform).GetComponent<DustPile>().SetAmount(amount);
             else goto TryAgain;
 
