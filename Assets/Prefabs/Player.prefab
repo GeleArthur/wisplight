@@ -556,14 +556,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9523ac30fcf34e588bc1d8d4fc5d2ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _broomReduced: 0
-  timerSUTFF: 15
+  reduceSpeed: 15
   broomPoint: {x: 0, y: 0, z: 0}
   circleRadius: 2.44
+  holdRadius: 1.5
   broomModel: {fileID: 7663580493863018608}
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 311
+  broomEnabled: 1
 --- !u!114 &199157252916738295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  noAngleRange: 1
+  noAngleRange: 1.25
   maxAngle: 90
 --- !u!114 &6965922001105172934
 MonoBehaviour:

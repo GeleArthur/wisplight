@@ -22,11 +22,11 @@ public class DustRegion : MonoBehaviour
         Vector3 randomPosition = transform.position + bounds.GetRandomPoint();
         float distance = randomPosition.y - (transform.position.y + bounds.center.y - bounds.extents.y);
         RaycastHit hit;
-        if (Physics.Raycast(randomPosition, Vector3.down, out hit, distance, ~(1 << 8), QueryTriggerInteraction.UseGlobal))
+        if (Physics.Raycast(randomPosition, Vector3.down, out hit, distance, ~(1 << 8 | 1 << 3), QueryTriggerInteraction.UseGlobal))
         {
             Quaternion rot = Quaternion.LookRotation(Vector3.forward, hit.normal);
             BoxCollider boxCollider = dustPrefab.GetComponent<BoxCollider>();
-            if (Physics.OverlapBox(hit.point + boxCollider.center, boxCollider.size / 2f, rot, ~(1 << 8)).Length == 0)
+            if (Physics.OverlapBox(hit.point + boxCollider.center, boxCollider.size * .5f, rot, ~(1 << 8 | 1 << 3)).Length == 0)
                 Instantiate(dustPrefab, hit.point, rot, transform).GetComponent<DustPile>().SetAmount(amount);
             else goto TryAgain;
 

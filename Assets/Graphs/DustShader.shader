@@ -9,6 +9,7 @@ Shader "DustGraph"
         [HDR]Color_f24be94f3f7140f2b052f1ea234c3ffb("Emission Color", Color) = (1, 1, 1, 1)
         Vector1_d7448e8c4bfe4629a845c4b4cf37f445("Sparkle Edge", Range(0, 1)) = 0.65
         Vector1_b508357b1e0b4ebfae0a54a8a1d8153c("Sparkle Speed", Float) = 0.5
+        Vector2_802daed63cb94e059bc4239c7065cbcb("Materialising remap", Vector) = (-0.1, 0, 0, 0)
         [NonModifiableTextureData][NoScaleOffset]_SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_Texture_1("Texture2D", 2D) = "white" {}
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
@@ -261,6 +262,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -525,8 +527,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float4 _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2;
     Unity_Multiply_float((_Step_a0998484051a4502944b2193794ec2af_Out_2.xxxx), _SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_RGBA_0, _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Property_460e92d704484d58a231c183f394e581_Out_0 = Vector1_eee1783ae5744fb3b3f1036218fe3bdb;
     float _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2;
     Unity_Add_float(_Remap_53339270754549bea2d7a6f99acc8e37_Out_3, _Property_460e92d704484d58a231c183f394e581_Out_0, _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2);
@@ -863,6 +866,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -1127,8 +1131,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float4 _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2;
     Unity_Multiply_float((_Step_a0998484051a4502944b2193794ec2af_Out_2.xxxx), _SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_RGBA_0, _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Property_460e92d704484d58a231c183f394e581_Out_0 = Vector1_eee1783ae5744fb3b3f1036218fe3bdb;
     float _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2;
     Unity_Add_float(_Remap_53339270754549bea2d7a6f99acc8e37_Out_3, _Property_460e92d704484d58a231c183f394e581_Out_0, _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2);
@@ -1402,6 +1407,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -1532,8 +1538,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
 {
     SurfaceDescription surface = (SurfaceDescription)0;
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -1781,6 +1788,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -1911,8 +1919,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
 {
     SurfaceDescription surface = (SurfaceDescription)0;
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -2173,6 +2182,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -2304,8 +2314,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
 {
     SurfaceDescription surface = (SurfaceDescription)0;
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -2558,6 +2569,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -2818,8 +2830,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float4 _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2;
     Unity_Multiply_float((_Step_a0998484051a4502944b2193794ec2af_Out_2.xxxx), _SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_RGBA_0, _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Property_460e92d704484d58a231c183f394e581_Out_0 = Vector1_eee1783ae5744fb3b3f1036218fe3bdb;
     float _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2;
     Unity_Add_float(_Remap_53339270754549bea2d7a6f99acc8e37_Out_3, _Property_460e92d704484d58a231c183f394e581_Out_0, _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2);
@@ -3080,6 +3093,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -3306,8 +3320,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float _Divide_e6407003f1734725bac05ea6e13d0c99_Out_2;
     Unity_Divide_float(_Add_a97a2c2aa00b452bb1df95eeced7cfb6_Out_2, 4, _Divide_e6407003f1734725bac05ea6e13d0c99_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -3632,6 +3647,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -3896,8 +3912,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float4 _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2;
     Unity_Multiply_float((_Step_a0998484051a4502944b2193794ec2af_Out_2.xxxx), _SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_RGBA_0, _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Property_460e92d704484d58a231c183f394e581_Out_0 = Vector1_eee1783ae5744fb3b3f1036218fe3bdb;
     float _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2;
     Unity_Add_float(_Remap_53339270754549bea2d7a6f99acc8e37_Out_3, _Property_460e92d704484d58a231c183f394e581_Out_0, _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2);
@@ -4169,6 +4186,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -4299,8 +4317,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
 {
     SurfaceDescription surface = (SurfaceDescription)0;
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -4547,6 +4566,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -4677,8 +4697,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
 {
     SurfaceDescription surface = (SurfaceDescription)0;
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -4938,6 +4959,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -5069,8 +5091,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
 {
     SurfaceDescription surface = (SurfaceDescription)0;
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
@@ -5323,6 +5346,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -5583,8 +5607,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float4 _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2;
     Unity_Multiply_float((_Step_a0998484051a4502944b2193794ec2af_Out_2.xxxx), _SampleTexture2D_3f088af80c334db6ae47e5e3f5a5435b_RGBA_0, _Multiply_b4ab13caabac4c0d974f6568c10abeda_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Property_460e92d704484d58a231c183f394e581_Out_0 = Vector1_eee1783ae5744fb3b3f1036218fe3bdb;
     float _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2;
     Unity_Add_float(_Remap_53339270754549bea2d7a6f99acc8e37_Out_3, _Property_460e92d704484d58a231c183f394e581_Out_0, _Add_6318c4fdc2bf45e78bacfb15c8b5e69f_Out_2);
@@ -5846,6 +5871,7 @@ float Vector1_6143018700ad4236ae154b2d19051c02;
 float4 Color_f24be94f3f7140f2b052f1ea234c3ffb;
 float Vector1_d7448e8c4bfe4629a845c4b4cf37f445;
 float Vector1_b508357b1e0b4ebfae0a54a8a1d8153c;
+float2 Vector2_802daed63cb94e059bc4239c7065cbcb;
 CBUFFER_END
 
 // Object and Global properties
@@ -6072,8 +6098,9 @@ SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
     float _Divide_e6407003f1734725bac05ea6e13d0c99_Out_2;
     Unity_Divide_float(_Add_a97a2c2aa00b452bb1df95eeced7cfb6_Out_2, 4, _Divide_e6407003f1734725bac05ea6e13d0c99_Out_2);
     float _Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0 = _Materialised;
+    float2 _Property_f7d2c63228604929b35569050ed326e7_Out_0 = Vector2_802daed63cb94e059bc4239c7065cbcb;
     float _Remap_53339270754549bea2d7a6f99acc8e37_Out_3;
-    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), float2 (-0.15, 1.1), _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
+    Unity_Remap_float(_Property_6ee5d2a2b8bf49de954a3cd5216487cc_Out_0, float2 (1, 0), _Property_f7d2c63228604929b35569050ed326e7_Out_0, _Remap_53339270754549bea2d7a6f99acc8e37_Out_3);
     float _Split_83e30752b4174625a6f883ac3b41892b_R_1 = SHADERGRAPH_OBJECT_POSITION[0];
     float _Split_83e30752b4174625a6f883ac3b41892b_G_2 = SHADERGRAPH_OBJECT_POSITION[1];
     float _Split_83e30752b4174625a6f883ac3b41892b_B_3 = SHADERGRAPH_OBJECT_POSITION[2];
