@@ -36,7 +36,7 @@ public class KnockBackHitter : MonoBehaviour
         {
             _clickDirection = GetClickDirection();
             
-            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, _broomMover.circleRadius, _broomMover.hitLayerMask))
+            if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, _broomMover.circleRadius, _broomMover.hitLayerMask, QueryTriggerInteraction.Ignore))
             {
                 _timeUntilClick = 0;
                 

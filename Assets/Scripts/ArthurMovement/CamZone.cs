@@ -7,20 +7,37 @@ using UnityEngine;
 public class CamZone : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
-    
-    
+    [SerializeField] private Bounds bounds;
+    private Transform _player;
+
     void Start()
     {
         virtualCamera.enabled = false;
+        _player = FindObjectOfType<PlayerMovement>().transform;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        // if(other.gameObject.layer == )
+        var boundsPlusPos = new Bounds(bounds.center, bounds.size);
+        boundsPlusPos.center += transform.position;
+        if (boundsPlusPos.Contains(_player.position))
+        {
+            if (virtualCamera.enabled == false)
+            {
+                virtualCamera.enabled = true;
+            }
+        }
+        else
+        {
+            if (virtualCamera.enabled == true)
+            {
+                virtualCamera.enabled = false;
+            }
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnDrawGizmos()
     {
-        
+        Gizmos.DrawWireCube(transform.position + bounds.center, bounds.size);
     }
 }
