@@ -87,20 +87,25 @@ public class EnemyBehaviour : StateMachine
                 float y = Mathf.Sin(i * Mathf.Deg2Rad) * 100;
                 
                 Debug.DrawLine(transform.position, transform.position + new Vector3(x,y));
-                Physics.Linecast(transform.position, transform.position + new Vector3(x, y), out RaycastHit hit);
-                if (hit.collider != null)
+                if (Physics.Raycast(transform.position, new Vector3(x, y, 0),  out RaycastHit hit, Single.MaxValue))
                 {
                     Debug.DrawRay(hit.point, Vector3.down);
-                    if (hit.normal == Vector3.down)
+                    Debug.Log("Dot product"+ Vector3.Dot(hit.normal, Vector3.down));
+                    if (Vector3.Dot(hit.normal, Vector3.down) < Mathf.Cos(45f))
                     {
                         hitLocations.Add(hit.point);
                     }
                 }
             }
+
+            if (hitLocations.Count == 0)
+            {
+                Debug.Log("BRUH HOW");
+            }
             
             int randomPoint = Random.Range(0, hitLocations.Count - 1);
-            Debug.Log(hitLocations.Count);
-            Debug.Log(randomPoint);
+            // Debug.Log(hitLocations.Count);
+            // Debug.Log(randomPoint);
             Vector3 hitPos = hitLocations[randomPoint];
             
             webOrigin.position = hitPos;
