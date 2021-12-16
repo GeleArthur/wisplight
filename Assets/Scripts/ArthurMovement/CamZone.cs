@@ -12,15 +12,14 @@ public class CamZone : MonoBehaviour
 
     void Start()
     {
+        if (virtualCamera == null) virtualCamera = GetComponent<CinemachineVirtualCamera>();
         virtualCamera.enabled = false;
         _player = FindObjectOfType<PlayerMovement>().transform;
     }
 
     private void Update()
     {
-        var boundsPlusPos = new Bounds(bounds.center, bounds.size);
-        boundsPlusPos.center += transform.position;
-        if (boundsPlusPos.Contains(_player.position))
+        if (bounds.Contains(_player.position))
         {
             if (virtualCamera.enabled == false)
             {
@@ -36,8 +35,8 @@ public class CamZone : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position + bounds.center, bounds.size);
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.DrawWireCube(bounds.center, bounds.size);
+    // }
 }
