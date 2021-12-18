@@ -22,12 +22,17 @@ public class EnemyBehaviour : StateMachine
         [HideInInspector]public Vector3 boxOffset;
         public LayerMask playerMask;
 
+        public float slopeCheck;
 
         private Idle _idle;
         private Attack _attack;
         private Restart _restart;
 
+        private float x, y;
+
         [HideInInspector] public LineRenderer lineRenderer;
+        
+        List<Vector3> hitLocations = new List<Vector3>();
         
         public EnemyBehaviour()
         {
@@ -53,6 +58,7 @@ public class EnemyBehaviour : StateMachine
 
         private void Update()
         {
+            //NewWebLocation(50);
             checkAmount = Mathf.Clamp(checkAmount, 1, 100);
             lineRenderer.SetPosition(1, transform.position);
             currentState.Update();
@@ -80,32 +86,26 @@ public class EnemyBehaviour : StateMachine
         
         public void NewWebLocation(int checkAmount)
         {
-            List<Vector3> hitLocations = new List<Vector3>();
+            
             for (int i = 0 + 180 / checkAmount; i < 180; i += 180 / checkAmount)
             {
-                float x = Mathf.Cos(i * Mathf.Deg2Rad) * 100;
-                float y = Mathf.Sin(i * Mathf.Deg2Rad) * 100;
+                x = Mathf.Cos(i * Mathf.Deg2Rad) ;
+                y = Mathf.Sin(i * Mathf.Deg2Rad) ;
                 
                 Debug.DrawLine(transform.position, transform.position + new Vector3(x,y));
-                if (Physics.Raycast(transform.position, new Vector3(x, y, 0),  out RaycastHit hit, Single.MaxValue))
+                Debug.DrawRay(transform.position ,new Vector3(x,y,0).normalized * 100);
+
+                if (Physics.Raycast(transform.position, new Vector3(x, y, 0).normalized * 100,  out RaycastHit hit, Single.MaxValue))
                 {
                     Debug.DrawRay(hit.point, Vector3.down);
-                    Debug.Log("Dot product"+ Vector3.Dot(hit.normal, Vector3.down));
-                    if (Vector3.Dot(hit.normal, Vector3.down) < Mathf.Cos(45f))
+                    if (Vector3.Dot(Vector3.down, hit.normal) >= slopeCheck)
                     {
                         hitLocations.Add(hit.point);
                     }
                 }
             }
 
-            if (hitLocations.Count == 0)
-            {
-                Debug.Log("BRUH HOW");
-            }
-            
             int randomPoint = Random.Range(0, hitLocations.Count - 1);
-            // Debug.Log(hitLocations.Count);
-            // Debug.Log(randomPoint);
             Vector3 hitPos = hitLocations[randomPoint];
             
             webOrigin.position = hitPos;
@@ -127,10 +127,17 @@ public class EnemyBehaviour : StateMachine
                     return true;
                 }
             }
-
             return false;
         }
-        
+
+        private void OnDrawGizmos()
+        {
+            if(hitLocations.Count <= 0) return;
+            foreach (var h in hitLocations)
+            {
+                Gizmos.DrawSphere(h, .2f);
+            }
+        }
     }
 
 
