@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Jari scenes/Jari.unity
+    path: Assets/Scenes/Jari scenes/Other/Jari.unity
     guid: ab742affc2212674b825711d9118734e
   m_configObjects: {}
