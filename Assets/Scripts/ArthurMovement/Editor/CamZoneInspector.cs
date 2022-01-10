@@ -100,6 +100,7 @@ public class CamZoneInspector : Editor
             var bounds = serializedObject.FindProperty("bounds").boundsValue;
             bounds.center = _pointOnZeroPlane+(_startedClicked - _pointOnZeroPlane)/2;
             bounds.size = (bounds.center - _pointOnZeroPlane)*2;
+            bounds.size = new Vector3(Math.Abs(bounds.size.x), Math.Abs(bounds.size.y), Math.Abs(bounds.size.z));
 
             serializedObject.FindProperty("bounds").boundsValue = bounds;
             serializedObject.ApplyModifiedProperties();

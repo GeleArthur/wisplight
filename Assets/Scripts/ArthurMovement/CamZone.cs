@@ -19,24 +19,6 @@ public class CamZone : MonoBehaviour
 
     private void Update()
     {
-        if (bounds.Contains(_player.position))
-        {
-            if (virtualCamera.enabled == false)
-            {
-                virtualCamera.enabled = true;
-            }
-        }
-        else
-        {
-            if (virtualCamera.enabled == true)
-            {
-                virtualCamera.enabled = false;
-            }
-        }
+        virtualCamera.enabled = bounds.Contains(_player.position);
     }
-
-    // private void OnDrawGizmos()
-    // {
-    //     Gizmos.DrawWireCube(bounds.center, bounds.size);
-    // }
 }
