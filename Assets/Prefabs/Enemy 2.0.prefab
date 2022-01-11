@@ -126,7 +126,7 @@ SpringJoint:
   m_GameObject: {fileID: 9099441815733855934}
   m_ConnectedBody: {fileID: 9099441816289957508}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 1.4, z: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
@@ -157,7 +157,7 @@ MonoBehaviour:
   joint: {fileID: 9099441815733855929}
   player: {fileID: 0}
   rb: {fileID: 9099441815733855933}
-  toPlayerForce: 1.5
+  toPlayerForce: 2
   raycheckDistance: 23
   checkAmount: 4
   boxRadius: {x: 0, y: 0, z: 0}
