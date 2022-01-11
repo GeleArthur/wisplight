@@ -1,32 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class DustPile : MonoBehaviour, DustCleanedInterface
 {
     [SerializeField] private float amount = 0;
-    [SerializeField] private float offset = 0.5f;
     [SerializeField] private GameObject[] models = new GameObject[] { };
     [SerializeField] private float maxDust = 50f;
     [SerializeField] private float cleanAnimationTime = 5f;
+
+    [SerializeField] private AnimationCurve curve;
 
     private float lifeLeft = 0f;
     private bool cleaned = false;
 
     private Material dustMat = null;
 
-    private void Awake()
-    {
-
-    }
-
     public void Update()
     {
         if (cleaned)
         {
             lifeLeft -= Time.deltaTime;
-            //transform.localScale = Vector3.one * (lifeLeft / cleanAnimationTime);
-            dustMat.SetFloat("_Materialised", lifeLeft / cleanAnimationTime);
+            Debug.Log(lifeLeft / cleanAnimationTime);
+            dustMat.SetFloat("_Materialised", curve.Evaluate(lifeLeft / cleanAnimationTime));
             if (lifeLeft <= 0f)
                 Destroy(gameObject);
         }

@@ -62,7 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 0
-  offset: 0.5
   models:
   - {fileID: 5786344861897626869}
   - {fileID: 9005203526666950885}
@@ -70,6 +69,39 @@ MonoBehaviour:
   - {fileID: 1268913676905368711}
   maxDust: 50
   cleanAnimationTime: 2
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.36548865
+      outSlope: 0.36548865
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.750574
+      value: 0.27432626
+      inSlope: 0.6409241
+      outSlope: 0.6409241
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.7906645
+      outWeight: 0.08652172
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.9093747
+      outSlope: 2.9093747
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &954994802418472537
 PrefabInstance:
   m_ObjectHideFlags: 0
