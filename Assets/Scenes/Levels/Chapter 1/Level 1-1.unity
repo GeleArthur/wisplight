@@ -2218,6 +2218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693920838, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
+      propertyPath: broomEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 199157252916738292, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2228,7 +2232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 199157252916738292, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.574001
+      value: 11.324001
       objectReference: {fileID: 0}
     - target: {fileID: 199157252916738292, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
       propertyPath: m_LocalPosition.z

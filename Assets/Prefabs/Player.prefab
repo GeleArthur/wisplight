@@ -97,7 +97,7 @@ MonoBehaviour:
   player: {fileID: 199157252916738292}
   layers:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1
   offset: 0.02
 --- !u!1 &467620763
 GameObject:
@@ -633,7 +633,7 @@ MonoBehaviour:
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 311
-  broomEnabled: 0
+  broomEnabled: 1
 --- !u!114 &199157252916738295
 MonoBehaviour:
   m_ObjectHideFlags: 0
