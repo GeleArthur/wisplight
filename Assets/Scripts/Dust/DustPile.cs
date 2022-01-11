@@ -22,7 +22,6 @@ public class DustPile : MonoBehaviour, DustCleanedInterface
         if (cleaned)
         {
             lifeLeft -= Time.deltaTime;
-            Debug.Log(lifeLeft / cleanAnimationTime);
             dustMat.SetFloat("_Materialised", curve.Evaluate(lifeLeft / cleanAnimationTime));
             if (lifeLeft <= 0f)
                 Destroy(gameObject);
