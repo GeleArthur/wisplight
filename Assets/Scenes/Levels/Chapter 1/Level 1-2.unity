@@ -6406,18 +6406,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1256412794, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: changeSpeed
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256412795, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256412795, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 199157252916738292, guid: 6deeedaefa02b644a9f04985b804b26a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6688,7 +6676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16b2ca5b380fff842b6eee8985db8c49, type: 2}
+  - {fileID: 2100000, guid: fd35f88f830eda14582f837c4899772b, type: 2}
   - {fileID: 2100000, guid: 8938884dda925c1469e09657065f1633, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
