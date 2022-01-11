@@ -88,6 +88,7 @@ public class EnemyBehaviour : StateMachine
         
         public void NewWebLocation(int checkAmount)
         {
+            hitLocations = new List<Vector3>();
             
             for (int i = 0 + 180 / checkAmount; i < 180; i += 180 / checkAmount)
             {
@@ -107,12 +108,24 @@ public class EnemyBehaviour : StateMachine
                 }
             }
 
+            if (hitLocations.Count <= 0)
+            {
+                gameObject.SetActive(false);
+                NewWebLocation(50);
+            }
+            
             int randomPoint = Random.Range(0, hitLocations.Count - 1);
             Vector3 hitPos = hitLocations[randomPoint];
             
             webOrigin.position = hitPos;
             
         }
+
+        public bool CheckConnection()
+        {
+            return Physics.Raycast(transform.position, webOrigin.position, Vector2.Distance(transform.position, webOrigin.position) - .1f);
+        }
+        
         
         public bool PlayerInSight(int checkAmount)
         {

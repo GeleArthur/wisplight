@@ -17,6 +17,10 @@ using UnityEngine;
         public override void Update()
         {
             enemyBehaviour.IsWebActive(true);
+            if (enemyBehaviour.CheckConnection())
+            {
+                enemyBehaviour.NewWebLocation(50);
+            }
         }
 
         private IEnumerator ToIdle()

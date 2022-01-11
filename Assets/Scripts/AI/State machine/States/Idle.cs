@@ -16,6 +16,12 @@ using UnityEngine;
             {
                 enemyBehaviour.SwitchState(new Attack(enemyBehaviour));
             }
+
+            if (enemyBehaviour.CheckConnection())
+            {
+                enemyBehaviour.NewWebLocation(50);
+            }
+           
         }
 
        
