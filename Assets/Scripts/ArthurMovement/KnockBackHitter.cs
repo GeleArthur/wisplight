@@ -30,9 +30,9 @@ public class KnockBackHitter : MonoBehaviour
     {
         if (_broomMover.broomEnabled && Input.GetMouseButtonDown(0))
         {
+            BroomSound();
             _broomMover.BroomHit();
             _timeUntilClick = DateTime.Now.Ticks + waitTimeMilliseconds * TimeSpan.TicksPerMillisecond;
-           BroomSound();
         }
 
         if (_timeUntilClick > DateTime.Now.Ticks)
