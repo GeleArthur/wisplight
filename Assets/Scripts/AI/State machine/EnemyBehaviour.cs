@@ -14,7 +14,9 @@ public class EnemyBehaviour : StateMachine
         public float toPlayerForce;
 
         [Header("check settings")] 
-        public float raycheckDistance;
+        public float playerCheckDistance;
+
+        public float ceilingCheckDistance;
 
         public int checkAmount;
         
@@ -95,7 +97,7 @@ public class EnemyBehaviour : StateMachine
                 Debug.DrawLine(transform.position, transform.position + new Vector3(x,y));
                 Debug.DrawRay(transform.position ,new Vector3(x,y,0).normalized * 100);
 
-                if (Physics.Raycast(transform.position, new Vector3(x, y, 0).normalized * 100,  out RaycastHit hit, Single.MaxValue))
+                if (Physics.Raycast(transform.position, new Vector3(x, y, 0).normalized * ceilingCheckDistance,  out RaycastHit hit, Single.MaxValue))
                 {
                     Debug.DrawRay(hit.point, Vector3.down);
                     if (Vector3.Dot(Vector3.down, hit.normal) >= slopeCheck)
@@ -116,8 +118,8 @@ public class EnemyBehaviour : StateMachine
         {
             for (int i = 90 + 360 / checkAmount; i < 360; i += checkAmount)
             {
-                float x = Mathf.Cos(i * Mathf.Deg2Rad) * raycheckDistance;
-                float y = Mathf.Sin(i * Mathf.Deg2Rad) * raycheckDistance;
+                float x = Mathf.Cos(i * Mathf.Deg2Rad) * playerCheckDistance;
+                float y = Mathf.Sin(i * Mathf.Deg2Rad) * playerCheckDistance;
 
                 Debug.DrawLine(transform.position, transform.position + new Vector3(x,y));
                 Physics.Linecast(transform.position, transform.position + new Vector3(x, y), out RaycastHit hit,playerMask);
