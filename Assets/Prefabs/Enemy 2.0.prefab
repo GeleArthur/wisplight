@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9099441815733855932}
   - component: {fileID: 9099441815733855929}
   - component: {fileID: 9099441815733855935}
+  - component: {fileID: 7665081598279907223}
   - component: {fileID: 9099441815733855911}
   - component: {fileID: 9099441815733855910}
   m_Layer: 0
@@ -159,7 +160,8 @@ MonoBehaviour:
   player: {fileID: 0}
   rb: {fileID: 9099441815733855933}
   toPlayerForce: 2
-  raycheckDistance: 23
+  playerCheckDistance: 0
+  ceilingCheckDistance: 0
   checkAmount: 4
   boxRadius: {x: 0, y: 0, z: 0}
   boxOffset: {x: 0, y: 0, z: 0}
@@ -168,6 +170,20 @@ MonoBehaviour:
     m_Bits: 8
   slopeCheck: 0.75
   lineRenderer: {fileID: 0}
+--- !u!114 &7665081598279907223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099441815733855934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d8b5aac5dc15d4d9104041d4c391e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  damageAmount: 1
 --- !u!120 &9099441815733855911
 LineRenderer:
   m_ObjectHideFlags: 0
