@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class KnockBackHitter : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class KnockBackHitter : MonoBehaviour
     public float forceMultiplayer;
     public int waitTimeMilliseconds;
 
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -30,10 +32,14 @@ public class KnockBackHitter : MonoBehaviour
         {
             _broomMover.BroomHit();
             _timeUntilClick = DateTime.Now.Ticks + waitTimeMilliseconds * TimeSpan.TicksPerMillisecond;
+           BroomSound();
         }
 
         if (_timeUntilClick > DateTime.Now.Ticks)
         {
+         
+            
+            
             _clickDirection = GetClickDirection();
             
             if (Physics.Raycast(transform.position, _clickDirection, out RaycastHit hitInfo, _broomMover.circleRadius, _broomMover.hitLayerMask, QueryTriggerInteraction.Ignore))
@@ -100,6 +106,26 @@ public class KnockBackHitter : MonoBehaviour
         {
             circlePointGm.GetComponent<MeshRenderer>().material.color = Color.white;
             circleStrokeGm.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
+    }
+
+    private void BroomSound()
+    {
+        int broomSoundIndex = Random.Range(0, 4);
+        switch (broomSoundIndex)
+        {
+            case 0:
+                AudioManager.instance.Play("Broom1");
+                break;
+            case 1:
+                AudioManager.instance.Play("Broom2");
+                break;
+            case 2:
+                AudioManager.instance.Play("Broom3");
+                break;
+            case 3:
+                AudioManager.instance.Play("Broom4");
+                break;
         }
     }
 
