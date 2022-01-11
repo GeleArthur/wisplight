@@ -95,9 +95,9 @@ public class EnemyBehaviour : StateMachine
                 y = Mathf.Sin(i * Mathf.Deg2Rad) ;
                 
                 Debug.DrawLine(transform.position, transform.position + new Vector3(x,y));
-                Debug.DrawRay(transform.position ,new Vector3(x,y,0).normalized * 100);
+                Debug.DrawRay(transform.position ,new Vector3(x,y,0).normalized * ceilingCheckDistance);
 
-                if (Physics.Raycast(transform.position, new Vector3(x, y, 0).normalized * ceilingCheckDistance,  out RaycastHit hit, Single.MaxValue))
+                if (Physics.Raycast(transform.position, new Vector3(x, y, 0).normalized * ceilingCheckDistance,  out RaycastHit hit, ceilingCheckDistance))
                 {
                     Debug.DrawRay(hit.point, Vector3.down);
                     if (Vector3.Dot(Vector3.down, hit.normal) >= slopeCheck)

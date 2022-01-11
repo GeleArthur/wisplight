@@ -159,9 +159,9 @@ MonoBehaviour:
   joint: {fileID: 9099441815733855929}
   player: {fileID: 0}
   rb: {fileID: 9099441815733855933}
-  toPlayerForce: 2
-  playerCheckDistance: 0
-  ceilingCheckDistance: 0
+  toPlayerForce: 30
+  playerCheckDistance: 12.04
+  ceilingCheckDistance: 30
   checkAmount: 4
   boxRadius: {x: 0, y: 0, z: 0}
   boxOffset: {x: 0, y: 0, z: 0}
@@ -446,7 +446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9099441816289957510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16749191, y: -0.5228653, z: 0}
+  m_LocalPosition: {x: -0.95, y: -2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9099441816220399024}
