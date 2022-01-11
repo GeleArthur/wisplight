@@ -5,41 +5,45 @@ using UnityEngine;
 
 public class TriggerOneWayAnimation : MonoBehaviour
 {
-    private Animator animator;
-    private string currentState;
+    [SerializeField] private Transform meshRotation;
+    private Rigidbody _playerRb;
     
-    private const string ROTATE = "RotateBalk";
-    private const string IDLE = "Idle";
-    
-
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _playerRb = FindObjectOfType<PlayerMovement>().GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Bruh2");
-            ChangeAnimationState(ROTATE);
+            if (_playerRb.velocity.y > 0)
+            {
+                bool flag = transform.position.x < _playerRb.position.x;
+                
+                StopAllCoroutines();
+                StartCoroutine(rotate(flag));
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private IEnumerator rotate(bool leftSide)
     {
-        if (other.CompareTag("Player"))
+        float rotation = 0;
+        float goal = leftSide ? 180 : -180;
+
+        while (true)
         {
-            ChangeAnimationState(IDLE);
+            rotation += Time.deltaTime/0.2f;
+            meshRotation.rotation = Quaternion.Euler(0,0, rotation*goal);
+            
+            if (rotation > 1)
+            {
+                rotation = 1;
+                meshRotation.rotation = Quaternion.Euler(0,0, goal);
+            }
+            
+            yield return new WaitForEndOfFrame();
         }
-    }
-
-    void ChangeAnimationState(string newState)
-    {
-        if(currentState == newState) return;
-        
-        animator.Play(newState);
-
-        currentState = newState;
     }
 }
