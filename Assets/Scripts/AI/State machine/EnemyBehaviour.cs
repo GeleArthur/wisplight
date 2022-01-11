@@ -89,6 +89,7 @@ public class EnemyBehaviour : StateMachine
         public void NewWebLocation(int checkAmount)
         {
             hitLocations.Clear();
+            
             for (int i = 0 + 180 / checkAmount; i < 180; i += 180 / checkAmount)
             {
                 x = Mathf.Cos(i * Mathf.Deg2Rad) ;
