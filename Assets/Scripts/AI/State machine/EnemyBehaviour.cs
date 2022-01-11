@@ -88,7 +88,7 @@ public class EnemyBehaviour : StateMachine
         
         public void NewWebLocation(int checkAmount)
         {
-            hitLocations.Clear();
+            hitLocations = new List<Vector3>();
             
             for (int i = 0 + 180 / checkAmount; i < 180; i += 180 / checkAmount)
             {
