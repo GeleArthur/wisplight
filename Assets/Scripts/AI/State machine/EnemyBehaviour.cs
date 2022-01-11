@@ -123,7 +123,7 @@ public class EnemyBehaviour : StateMachine
 
         public bool CheckConnection()
         {
-            return Physics.Raycast(transform.position, webOrigin.position, Vector2.Distance(transform.position, webOrigin.position));
+            return Physics.Raycast(transform.position, webOrigin.position, Vector2.Distance(transform.position, webOrigin.position) - .1f);
         }
         
         
