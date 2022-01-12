@@ -111,8 +111,9 @@ public class EnemyBehaviour : StateMachine
             if (hitLocations.Count <= 0)
             {
                 gameObject.SetActive(false);
-                NewWebLocation(50);
+                return;
             }
+            
             
             int randomPoint = Random.Range(0, hitLocations.Count - 1);
             Vector3 hitPos = hitLocations[randomPoint];
