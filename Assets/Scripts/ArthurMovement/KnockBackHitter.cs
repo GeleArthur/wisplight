@@ -111,6 +111,7 @@ public class KnockBackHitter : MonoBehaviour
 
     private void BroomSound()
     {
+        
         int broomSoundIndex = Random.Range(0, 4);
         switch (broomSoundIndex)
         {
