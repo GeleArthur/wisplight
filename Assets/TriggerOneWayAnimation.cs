@@ -7,6 +7,7 @@ public class TriggerOneWayAnimation : MonoBehaviour
 {
     [SerializeField] private Transform meshRotation;
     private Rigidbody _playerRb;
+    [SerializeField] private bool backWay;
     
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class TriggerOneWayAnimation : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (_playerRb.velocity.y > 0)
+            if ((!backWay && _playerRb.velocity.y > 12) || (backWay && _playerRb.velocity.y < 0))
             {
                 bool flag = transform.position.x < _playerRb.position.x;
                 
@@ -30,7 +31,17 @@ public class TriggerOneWayAnimation : MonoBehaviour
     private IEnumerator rotate(bool leftSide)
     {
         float rotation = 0;
-        float goal = leftSide ? 180 : -180;
+        float goal = 0;
+
+        if (backWay)
+        {
+            goal = leftSide ? -180 : 180;
+        }
+        else
+        {
+            goal = leftSide ? 180 : -180;
+        }
+        
 
         while (true)
         {

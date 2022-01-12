@@ -23,7 +23,14 @@ public class LightMapShit : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, (player.transform.position - Camera.main.transform.position).normalized, out hit, 100f, (1 << 0), QueryTriggerInteraction.UseGlobal);
 
-        if (hit.transform == null || hit.transform.gameObject.GetComponent<Renderer>() == null)
+        if (hit.transform == null)
+        {
+            characterLight.intensity = 0;
+            return;
+        }
+
+        Renderer r = hit.transform.gameObject.GetComponent<Renderer>();
+        if (r == null || r.lightmapIndex == -1)
         {
             characterLight.intensity = 0;
             return;
