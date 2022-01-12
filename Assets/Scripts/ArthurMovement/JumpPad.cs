@@ -8,20 +8,14 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour, IKnockBack
 {
     [SerializeField] private ParticleSystem hitParticles;
-    [SerializeField] private float showParticleDuration;
     
     public float upForce = 40;
-
-    private void Start()
-    {
-        if(hitParticles != null) hitParticles.Stop();
-    }
 
     public void Hit()
     {
         var playerKnockBack = GameObject.Find("Player").GetComponent<Rigidbody>();
 
-        StartCoroutine(ShowParticles());
+        if(hitParticles != null) hitParticles.Play(true);
         
         var newForce = transform.up * upForce;
 
@@ -39,15 +33,6 @@ public class JumpPad : MonoBehaviour, IKnockBack
         Gizmos.DrawLine(transform.GetComponent<Renderer>().bounds.center, transform.GetComponent<Renderer>().bounds.center+transform.up*upForce/2);
     }
 
-    IEnumerator ShowParticles()
-    {
-        hitParticles.Play(true);
-        yield return new WaitForSeconds(showParticleDuration);
-        // hitParticles.Play(true);
-        // hitParticles.SetActive(false);
-
-    }
-    
     private float ChangeDir(float currentVel, float goingVel)
     {
         if ((goingVel >= 0 && currentVel > 0))

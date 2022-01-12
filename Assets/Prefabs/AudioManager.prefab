@@ -68,3 +68,39 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Boost
+    clip: {fileID: 8300000, guid: 5cc10a8667041e64c9f36b4c0a671e52, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Clean1
+    clip: {fileID: 8300000, guid: 0855525c47997254c80eb1e85cb2c11a, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Clean2
+    clip: {fileID: 8300000, guid: 32637bf2932c9e8438ceed963a769eb6, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Clean3
+    clip: {fileID: 8300000, guid: 4cafaae7ddba7a641920e722c8f24128, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Clean4
+    clip: {fileID: 8300000, guid: d9490ca133b41a34e95731284b231abb, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Clean5
+    clip: {fileID: 8300000, guid: 2208873f5b44980418b340b58cbaca40, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
