@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour, IKnockBack
 {
-    [SerializeField] private GameObject hitParticles;
+    [SerializeField] private ParticleSystem hitParticles;
     [SerializeField] private float showParticleDuration;
     
     public float upForce = 40;
 
     private void Start()
     {
-        hitParticles.SetActive(false);
+        if(hitParticles != null) hitParticles.Stop();
     }
 
     public void Hit()
@@ -41,9 +41,10 @@ public class JumpPad : MonoBehaviour, IKnockBack
 
     IEnumerator ShowParticles()
     {
-        hitParticles.SetActive(true);
+        hitParticles.Play(true);
         yield return new WaitForSeconds(showParticleDuration);
-        hitParticles.SetActive(false);
+        // hitParticles.Play(true);
+        // hitParticles.SetActive(false);
 
     }
     
