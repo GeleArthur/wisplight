@@ -18,10 +18,8 @@ public class JumpPad : MonoBehaviour, IKnockBack
         var y = ChangeDir(playerKnockBack.velocity.y, newForce.y);
         var z = ChangeDir(playerKnockBack.velocity.z, newForce.z);
         
-        playerKnockBack.velocity = new Vector3(
-            x, 
-            y, 
-            z);
+        playerKnockBack.velocity = new Vector3(x, y, z);
+        AudioManager.instance.Play("Boost");
     }
 
     private void OnDrawGizmos()
