@@ -20,7 +20,6 @@ public class TriggerOneWayAnimation : MonoBehaviour
         {
             if ((!backWay && _playerRb.velocity.y > 12) || (backWay && _playerRb.velocity.y < 0))
             {
-                AudioManager.instance.Play("DoorSound");
                 bool flag = transform.position.x < _playerRb.position.x;
                 
                 StopAllCoroutines();
@@ -37,10 +36,14 @@ public class TriggerOneWayAnimation : MonoBehaviour
         if (backWay)
         {
             goal = leftSide ? -180 : 180;
+            AudioManager.instance.Play("BackWay");
+
         }
         else
         {
             goal = leftSide ? 180 : -180;
+            AudioManager.instance.Play("OneWay");
+
         }
         
 

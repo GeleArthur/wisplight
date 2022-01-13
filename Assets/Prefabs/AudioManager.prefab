@@ -116,3 +116,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: OneWay
+    clip: {fileID: 8300000, guid: bc0b9573e69bdf94b91bc31389fd9455, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BackWay
+    clip: {fileID: 8300000, guid: f43182a202caa814590a1bf94e38e57e, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
