@@ -50,12 +50,6 @@ public class DustManager : MonoBehaviour
         AddDust(maxAmountOfDust);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void AddDust(float amount)
     {
         if (dustRegions.Count == 0)

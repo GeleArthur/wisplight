@@ -44,6 +44,9 @@ public class DustPile : MonoBehaviour, DustCleanedInterface
     {
         if (!cleaned)
         {
+            int cleanInt = Random.Range(1, 6);
+
+            AudioManager.instance.Play("Clean"+cleanInt);
             DustManager.Singleton.RemoveDust(amount);
             GetComponent<BoxCollider>().enabled = false;
             cleaned = true;
