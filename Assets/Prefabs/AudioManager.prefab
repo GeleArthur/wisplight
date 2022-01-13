@@ -104,3 +104,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Whoos
+    clip: {fileID: 8300000, guid: b38f22e737cae6f44969316cd66760f9, type: 3}
+    volume: 0.804
+    pitch: 1.18
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 31a3a7b6cf7a3a3408cf7438504780c1, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

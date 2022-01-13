@@ -26,6 +26,7 @@ using UnityEngine;
             var dir = enemyBehaviour.player.position - enemyBehaviour.transform.position;
             enemyBehaviour.rb.velocity = dir.normalized * enemyBehaviour.toPlayerForce;
             
+            AudioManager.instance.Play("Hit");
             yield return new WaitForSeconds(2f);
             enemyBehaviour.SwitchState(new Restart(enemyBehaviour));
         }
@@ -35,6 +36,7 @@ using UnityEngine;
             Vector3 dir = enemyBehaviour.player.position - enemyBehaviour.transform.position;
             enemyBehaviour.rb.AddForce(dir.normalized * 1000);
             //enemyBehaviour.joint.anchor = new Vector3(0, -1, 0);
+            AudioManager.instance.Play("Whoos");
             yield return new WaitForSeconds(.5f);
             enemyBehaviour.StartCoroutine(Drop());
             yield break;
