@@ -5489,10 +5489,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectBroom
       objectReference: {fileID: 0}
-    - target: {fileID: 5860085818644469158, guid: 77445a89a89995e46a2fb225d9ec1c8a, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6492191396717121308, guid: 77445a89a89995e46a2fb225d9ec1c8a, type: 3}
       propertyPath: m_RootOrder
       value: 1
