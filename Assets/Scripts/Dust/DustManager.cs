@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 [DisallowMultipleComponent]
 public class DustManager : MonoBehaviour
@@ -74,8 +77,15 @@ public class DustManager : MonoBehaviour
     public void RemoveDust(float amount)
     {
         currentDust -= amount;
-        if (currentDust <= 0)
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if (Mathf.Floor(currentDust) <= 0)
+        {
+            if (PlayerPrefs.GetInt("level")+1 > SceneManager.GetActiveScene().buildIndex)
+            {
+                PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex+1);
+            }
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(0);
+        }
     }
 
     /// <summary>
