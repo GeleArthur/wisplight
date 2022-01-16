@@ -49,7 +49,7 @@ public class TriggerOneWayAnimation : MonoBehaviour
         {
             rotation += Time.deltaTime/0.2f;
             meshRotation.rotation = Quaternion.Euler(0,0, rotation*goal);
-            
+
             if (rotation > 1)
             {
                 meshRotation.rotation = Quaternion.Euler(0,0, goal);
