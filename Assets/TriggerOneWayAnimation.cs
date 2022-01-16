@@ -37,13 +37,11 @@ public class TriggerOneWayAnimation : MonoBehaviour
         {
             goal = leftSide ? -180 : 180;
             AudioManager.instance.Play("BackWay");
-
         }
         else
         {
             goal = leftSide ? 180 : -180;
             AudioManager.instance.Play("OneWay");
-
         }
         
 
@@ -54,8 +52,8 @@ public class TriggerOneWayAnimation : MonoBehaviour
             
             if (rotation > 1)
             {
-                rotation = 1;
                 meshRotation.rotation = Quaternion.Euler(0,0, goal);
+                yield break;
             }
             
             yield return new WaitForEndOfFrame();
