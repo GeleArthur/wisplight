@@ -15,29 +15,32 @@ public class LightMapShit : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         characterLight = GetComponent<Light>();
+        characterLight.intensity = GetLightLevel();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float grayscale = GetLightLevel();
+
+        characterLight.intensity = Mathf.MoveTowards(characterLight.intensity, minMax.x + grayscale * (minMax.y - minMax.x), Time.deltaTime * changeSpeed * (minMax.y - minMax.x));
+    }
+
+    float GetLightLevel()
+    {
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, (player.transform.position - Camera.main.transform.position).normalized, out hit, 100f, (1 << 0), QueryTriggerInteraction.UseGlobal);
 
         if (hit.transform == null)
-        {
-            characterLight.intensity = 0;
-            return;
-        }
+            return 0f;
+
 
         Renderer r = hit.transform.gameObject.GetComponent<Renderer>();
         if (r == null || r.lightmapIndex == -1)
-        {
-            characterLight.intensity = 0;
-            return;
-        }
+            return 0f;
 
-        float grayscale = LightmapSettings.lightmaps[hit.transform.gameObject.GetComponent<Renderer>().lightmapIndex].lightmapColor.GetPixelBilinear(hit.lightmapCoord.x, hit.lightmapCoord.y).grayscale;
+        Debug.Log($"{hit.transform.gameObject.GetComponent<Renderer>().lightmapIndex}   {hit.lightmapCoord}");
 
-        characterLight.intensity = Mathf.MoveTowards(characterLight.intensity, minMax.x + grayscale * (minMax.y - minMax.x), Time.deltaTime * changeSpeed * (minMax.y - minMax.x));
+        return LightmapSettings.lightmaps[hit.transform.gameObject.GetComponent<Renderer>().lightmapIndex].lightmapColor.GetPixelBilinear(hit.lightmapCoord.x, hit.lightmapCoord.y).grayscale;
     }
 }
