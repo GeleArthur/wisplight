@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -107,13 +108,11 @@ public class EnemyBehaviour : StateMachine
                     }
                 }
             }
-
             if (hitLocations.Count <= 0)
             {
                 gameObject.SetActive(false);
                 return;
             }
-            
             
             int randomPoint = Random.Range(0, hitLocations.Count - 1);
             Vector3 hitPos = hitLocations[randomPoint];
@@ -130,24 +129,26 @@ public class EnemyBehaviour : StateMachine
         
         public bool PlayerInSight(int checkAmount)
         {
-            for (int i = 90 + 360 / checkAmount; i < 360; i += checkAmount)
+            if (Vector3.Distance(player.transform.position, transform.position) < playerCheckDistance)
             {
-                float x = Mathf.Cos(i * Mathf.Deg2Rad) * playerCheckDistance;
-                float y = Mathf.Sin(i * Mathf.Deg2Rad) * playerCheckDistance;
-
-                Debug.DrawLine(transform.position, transform.position + new Vector3(x,y));
-                Physics.Linecast(transform.position, transform.position + new Vector3(x, y), out RaycastHit hit,playerMask);
-
-                if (hit.collider != null)
+                if (Physics.Raycast(transform.position, player.transform.position - transform.position, out var hit))
                 {
-                    return true;
-                }
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        return true;
+                    }
+                }                
             }
+
             return false;
         }
 
         private void OnDrawGizmos()
         {
+            #if UNITY_EDITOR
+            Handles.DrawWireDisc(transform.position, Vector3.forward, playerCheckDistance);
+            #endif
+            
             if(hitLocations.Count <= 0) return;
             foreach (var h in hitLocations)
             {
