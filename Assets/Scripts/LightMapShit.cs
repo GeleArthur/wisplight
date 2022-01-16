@@ -39,7 +39,7 @@ public class LightMapShit : MonoBehaviour
         if (r == null || r.lightmapIndex == -1)
             return 0f;
 
-        Debug.Log($"{hit.transform.gameObject.GetComponent<Renderer>().lightmapIndex}   {hit.lightmapCoord}");
+        // Debug.Log($"{hit.transform.gameObject.GetComponent<Renderer>().lightmapIndex}   {hit.lightmapCoord}");
 
         return LightmapSettings.lightmaps[hit.transform.gameObject.GetComponent<Renderer>().lightmapIndex].lightmapColor.GetPixelBilinear(hit.lightmapCoord.x, hit.lightmapCoord.y).grayscale;
     }
