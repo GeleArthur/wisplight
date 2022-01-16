@@ -10021,7 +10021,7 @@ Transform:
   m_LocalScale: {x: 3.3179, y: 3.3179, z: 3.3179}
   m_Children: []
   m_Father: {fileID: 893352360}
-  m_RootOrder: 210
+  m_RootOrder: 176
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &867935188
 MeshCollider:
@@ -10490,6 +10490,7 @@ Transform:
   - {fileID: 1672061871}
   - {fileID: 1370575939}
   - {fileID: 736411567}
+  - {fileID: 2711997167918018316}
   - {fileID: 1527644521}
   - {fileID: 306661037}
   - {fileID: 1392075430}
@@ -10521,7 +10522,6 @@ Transform:
   - {fileID: 912024035}
   - {fileID: 832078359}
   - {fileID: 1158608554}
-  - {fileID: 2711997167918018316}
   - {fileID: 798624124}
   - {fileID: 736641207}
   - {fileID: 103983017}
@@ -10547,6 +10547,7 @@ Transform:
   - {fileID: 1673136176}
   - {fileID: 1140741115}
   - {fileID: 103406083}
+  - {fileID: 1384271318}
   - {fileID: 1004837260}
   - {fileID: 635748228}
   - {fileID: 1096356331}
@@ -10562,7 +10563,6 @@ Transform:
   - {fileID: 1992407622}
   - {fileID: 1345711076}
   - {fileID: 419679324}
-  - {fileID: 1384271318}
   - {fileID: 2072381864}
   - {fileID: 447581737}
   - {fileID: 677828690}
@@ -10588,6 +10588,7 @@ Transform:
   - {fileID: 1756406745}
   - {fileID: 396115895}
   - {fileID: 253973236}
+  - {fileID: 867935187}
   - {fileID: 818316982}
   - {fileID: 2098633689}
   - {fileID: 1572035580}
@@ -10622,7 +10623,6 @@ Transform:
   - {fileID: 696075694}
   - {fileID: 1158986957}
   - {fileID: 803968924}
-  - {fileID: 867935187}
   - {fileID: 80435855}
   - {fileID: 1176185119}
   - {fileID: 712680835}
@@ -16598,7 +16598,7 @@ Transform:
   m_LocalScale: {x: 2.4609528, y: 2.4609528, z: 2.4609528}
   m_Children: []
   m_Father: {fileID: 893352360}
-  m_RootOrder: 150
+  m_RootOrder: 135
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1384271319
 MeshCollider:
@@ -24961,6 +24961,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5046762570426869133, guid: 2b63117846c9a424593410a05cc82271, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046762570426869133, guid: 2b63117846c9a424593410a05cc82271, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 50
       objectReference: {fileID: 0}
@@ -25451,7 +25455,7 @@ Transform:
   - {fileID: 1696546575}
   - {fileID: 434076346}
   m_Father: {fileID: 893352360}
-  m_RootOrder: 109
+  m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2711997167918018352
 MeshCollider:
@@ -25466,7 +25470,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 5292001416977516462, guid: 129ab6de804b0a44b911c47456e785cf, type: 3}
 --- !u!33 &2711997167918018353
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25525,8 +25529,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2711997167918018316}
-  - component: {fileID: 2711997167918018354}
   - component: {fileID: 2711997167918018353}
+  - component: {fileID: 2711997167918018354}
   - component: {fileID: 2711997167918018352}
   - component: {fileID: 2711997167918018359}
   m_Layer: 0
