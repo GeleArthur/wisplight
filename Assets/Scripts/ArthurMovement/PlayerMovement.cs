@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public float airAcceleration = 6000;
     public GameObject characterModel;
 
+    private Vector3 _startPoint;
+
 
     private void Start()
     {
@@ -27,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.solverVelocityIterations *= 5;
         _groundCheck = GetComponentInChildren<GroundCheck>();
 
+        _startPoint = transform.position;
+        
         // -9.81
         Physics.gravity = new Vector3(0, -40, 0);
     }
@@ -81,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (transform.position.y <= -10)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            transform.position = _startPoint;
     }
 
     private void Jump()
