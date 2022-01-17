@@ -38,6 +38,7 @@ public class EnemyBehaviour : StateMachine
         List<Vector3> hitLocations = new List<Vector3>();
 
         public Collider playerAttackCollider;
+        public LayerMask deactivateColliderLayers;
         
         
         public EnemyBehaviour()

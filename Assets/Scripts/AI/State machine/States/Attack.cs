@@ -15,7 +15,11 @@ using UnityEngine;
         public override void Update()
         {
            enemyBehaviour.IsWebActive(false);
-           //if(Physics.Raycast(enemyBehaviour.transform.position, Vector3.down))
+           Debug.DrawRay(enemyBehaviour.transform.position, Vector3.down * 2);
+           if (Physics.Raycast(enemyBehaviour.transform.position, Vector3.down * 2,  enemyBehaviour.deactivateColliderLayers))
+           {
+               enemyBehaviour.playerAttackCollider.enabled = false;
+           }
         }
 
         IEnumerator Drop()
