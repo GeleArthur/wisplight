@@ -79,13 +79,21 @@ public class DustManager : MonoBehaviour
         currentDust -= amount;
         if (Mathf.Floor(currentDust) <= 0)
         {
-            if (PlayerPrefs.GetInt("level")+1 > SceneManager.GetActiveScene().buildIndex)
-            {
-                PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex+1);
-            }
-            PlayerPrefs.Save();
-            SceneManager.LoadScene(0);
+            StartCoroutine(newLevel());
         }
+    }
+
+    private IEnumerator newLevel()
+    {
+        if (PlayerPrefs.GetInt("level")+1 > SceneManager.GetActiveScene().buildIndex)
+        {
+            PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex+1);
+        }
+        PlayerPrefs.Save();
+        AudioManager.instance.Play("Victory");
+        yield return new WaitForSeconds(4);
+
+        SceneManager.LoadScene(0);
     }
 
     /// <summary>
