@@ -25,28 +25,32 @@ public class ShadowProjector : MonoBehaviour
         Bounds bounds = player.GetComponent<PlayerMovement>().characterModel.GetComponent<Renderer>().bounds;
 
         castPos1 = player.position + new Vector3(bounds.size.x / 2f, -bounds.size.y / 2f + 0.3f, 0);
-        bool cast1 = Physics.Raycast(castPos1, Vector3.down, out RaycastHit hitInfo1, Single.MaxValue, layers);
+        bool cast1 = Physics.Raycast(castPos1, Vector3.down, out RaycastHit hitInfo1, 10, layers);
 
         castPos2 = player.position + new Vector3(-bounds.size.x / 2f, -bounds.size.y / 2f + 0.3f, 0);
-        bool cast2 = Physics.Raycast(castPos2, Vector3.down, out RaycastHit hitInfo2, Single.MaxValue, layers);
-
-        // float shadowLength = 0;
+        bool cast2 = Physics.Raycast(castPos2, Vector3.down, out RaycastHit hitInfo2, 10, layers);
         
-        // if (cast1 == true) shadowLength = hitInfo1.distance;
-        // if (cast2 == true && hitInfo2.distance > shadowLength) shadowLength = hitInfo2.distance;
-        
-
         if (!cast1 && !cast2)
         {
-            // transform.position = new Vector3(1000000000, 100000000, 1000000000);
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0);
             return;
         }
 
-        float startY = Mathf.Max(hitInfo1.point.y, hitInfo2.point.y)+offset;
-        float endY = Mathf.Min(hitInfo1.point.y, hitInfo2.point.y);
+        float startY;
+        float endY;
         
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, endY-startY);
+        if(Mathf.Approximately(hitInfo1.point.y, hitInfo2.point.y))
+        {
+            startY = player.position.y - (bounds.size.y / 2f) + 0.1f;
+            endY = hitInfo1.point.y - 0.1f;
+        }
+        else
+        {
+            startY = Mathf.Max(hitInfo1.point.y, hitInfo2.point.y)+offset;
+            endY = Mathf.Min(hitInfo1.point.y, hitInfo2.point.y)-offset;
+        }
+
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, startY-endY);
         transform.position = new Vector3(player.position.x, (startY+endY)/2, player.position.z);
         // transform.position = player.position - new Vector3(0, bounds.size.y / 2f, 0) - new Vector3(0, shadowLength / 2-offset, 0);
 
@@ -61,10 +65,6 @@ public class ShadowProjector : MonoBehaviour
     {
         if(player == null)
             player = transform.parent;
-        Bounds wut = player.GetComponent<PlayerMovement>().characterModel.GetComponent<Renderer>().bounds;
-
-        Gizmos.DrawRay(castPos1, Vector3.down);
-        Gizmos.DrawRay(castPos2, Vector3.down);
     }
 #endif
 }
