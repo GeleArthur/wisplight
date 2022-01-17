@@ -9,6 +9,7 @@ public class Health : MonoBehaviour, IKnockBack
         
     public void Hit()
     {
+        AudioManager.instance.Play("Punch hit");
         health -= damageAmount;
         if (health <= 0) Die();
     }

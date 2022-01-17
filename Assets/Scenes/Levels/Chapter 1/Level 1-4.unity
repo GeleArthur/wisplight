@@ -4607,7 +4607,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 60, y: 15}
+  m_AreaSize: {x: 87.74802, y: 22.08339}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
@@ -7047,6 +7047,26 @@ PrefabInstance:
     - target: {fileID: 8996829933876102416, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996829933876102417, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
+      propertyPath: sounds.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996829933876102417, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
+      propertyPath: sounds.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 209963cdb54a39d489403d18267f0ca5, type: 3}
+    - target: {fileID: 8996829933876102417, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: Punch hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996829933876102417, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
+      propertyPath: sounds.Array.data[14].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996829933876102417, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
+      propertyPath: sounds.Array.data[14].volume
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8996829933876102422, guid: bc5faaad0e16af84191f59ee467eafc8, type: 3}
       propertyPath: m_Name
