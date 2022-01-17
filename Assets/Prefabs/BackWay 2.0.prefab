@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 9096523052590360512}
   - component: {fileID: 9096523052590360511}
   - component: {fileID: 9096523052590360510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,6 +292,10 @@ PrefabInstance:
     - target: {fileID: 2237117422264490143, guid: 204c7c7b87ed9a749bc7887f67b66048, type: 3}
       propertyPath: m_Name
       value: Plank2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237117422264490143, guid: 204c7c7b87ed9a749bc7887f67b66048, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2237117422264490143, guid: 204c7c7b87ed9a749bc7887f67b66048, type: 3}
       propertyPath: m_StaticEditorFlags

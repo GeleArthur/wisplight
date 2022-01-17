@@ -24,21 +24,31 @@ public class ShadowProjector : MonoBehaviour
     {
         Bounds bounds = player.GetComponent<PlayerMovement>().characterModel.GetComponent<Renderer>().bounds;
 
-        castPos1 = player.position + new Vector3(bounds.size.x / 2f, -bounds.size.y / 2f + 0.1f, 0);
-        bool cast1 = Physics.Raycast(castPos1,
-            Vector3.down, out RaycastHit hitInfo1, Single.MaxValue, layers);
+        castPos1 = player.position + new Vector3(bounds.size.x / 2f, -bounds.size.y / 2f + 0.3f, 0);
+        bool cast1 = Physics.Raycast(castPos1, Vector3.down, out RaycastHit hitInfo1, Single.MaxValue, layers);
 
-        castPos2 = player.position + new Vector3(-bounds.size.x / 2f, -bounds.size.y / 2f + 0.1f, 0);
-        bool cast2 = Physics.Raycast(castPos2,
-            Vector3.down, out RaycastHit hitInfo2, Single.MaxValue, layers);
+        castPos2 = player.position + new Vector3(-bounds.size.x / 2f, -bounds.size.y / 2f + 0.3f, 0);
+        bool cast2 = Physics.Raycast(castPos2, Vector3.down, out RaycastHit hitInfo2, Single.MaxValue, layers);
 
-        float shadowLength = 0;
+        // float shadowLength = 0;
+        
+        // if (cast1 == true) shadowLength = hitInfo1.distance;
+        // if (cast2 == true && hitInfo2.distance > shadowLength) shadowLength = hitInfo2.distance;
+        
 
-        if (cast1 == true) shadowLength = hitInfo1.distance;
-        if (cast2 == true && hitInfo2.distance < shadowLength) shadowLength = hitInfo2.distance;
+        if (!cast1 && !cast2)
+        {
+            // transform.position = new Vector3(1000000000, 100000000, 1000000000);
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0);
+            return;
+        }
 
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, shadowLength);
-        transform.position = player.position - new Vector3(0, bounds.size.y / 2f, 0) - new Vector3(0, shadowLength / 2-offset, 0);
+        float startY = Mathf.Max(hitInfo1.point.y, hitInfo2.point.y)+offset;
+        float endY = Mathf.Min(hitInfo1.point.y, hitInfo2.point.y);
+        
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, endY-startY);
+        transform.position = new Vector3(player.position.x, (startY+endY)/2, player.position.z);
+        // transform.position = player.position - new Vector3(0, bounds.size.y / 2f, 0) - new Vector3(0, shadowLength / 2-offset, 0);
 
         // if (Physics.Raycast(player.position, Vector3.down, out var hitInfo, Single.MaxValue, layers))
         // {
