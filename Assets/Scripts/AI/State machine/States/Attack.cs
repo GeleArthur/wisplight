@@ -15,6 +15,7 @@ using UnityEngine;
         public override void Update()
         {
            enemyBehaviour.IsWebActive(false);
+           //if(Physics.Raycast(enemyBehaviour.transform.position, Vector3.down))
         }
 
         IEnumerator Drop()
