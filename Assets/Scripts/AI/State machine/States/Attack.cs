@@ -15,8 +15,8 @@ using UnityEngine;
         public override void Update()
         {
            enemyBehaviour.IsWebActive(false);
-           Debug.DrawRay(enemyBehaviour.transform.position, Vector3.down * 2);
-           if (Physics.Raycast(enemyBehaviour.transform.position, Vector3.down * 2,  enemyBehaviour.deactivateColliderLayers))
+           Debug.DrawRay(enemyBehaviour.transform.position, Vector3.down * 2, Color.cyan);
+           if (Physics.Raycast(enemyBehaviour.transform.position, Vector3.down * 2, out var hit, 2 ,enemyBehaviour.deactivateColliderLayers))
            {
                enemyBehaviour.playerAttackCollider.enabled = false;
            }
