@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float airAcceleration = 6000;
     public GameObject characterModel;
 
-    private Vector3 _startPoint;
+    [HideInInspector] public Vector3 _startPoint;
 
 
     private void Start()

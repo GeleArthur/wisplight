@@ -26,6 +26,7 @@ using UnityEngine;
         private IEnumerator ToIdle()
         {
             yield return new WaitForSeconds(4f);
+            enemyBehaviour.playerAttackCollider.enabled = true;
             enemyBehaviour.SwitchState(new Idle(enemyBehaviour));
         }
     }
