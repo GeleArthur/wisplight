@@ -36,6 +36,9 @@ public class EnemyBehaviour : StateMachine
         [HideInInspector] public LineRenderer lineRenderer;
         
         List<Vector3> hitLocations = new List<Vector3>();
+
+        public Collider playerAttackCollider;
+        
         
         public EnemyBehaviour()
         {
