@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8996829933876102416
 Transform:
@@ -124,6 +124,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BackWay
     clip: {fileID: 8300000, guid: f43182a202caa814590a1bf94e38e57e, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Punch hit
+    clip: {fileID: 8300000, guid: 209963cdb54a39d489403d18267f0ca5, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
