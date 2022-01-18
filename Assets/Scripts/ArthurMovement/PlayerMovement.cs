@@ -85,7 +85,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (transform.position.y <= -10)
+        {
+            AudioManager.instance.Play("Ded");
             transform.position = _startPoint;
+        }
     }
 
     private void Jump()
