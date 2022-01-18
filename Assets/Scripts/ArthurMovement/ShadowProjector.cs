@@ -8,6 +8,8 @@ public class ShadowProjector : MonoBehaviour
     public Transform player;
     public LayerMask layers;
     public float offset;
+    
+    public MeshRenderer shadowMesh;
 
     private Vector3 castPos1;
     private Vector3 castPos2;
@@ -15,6 +17,7 @@ public class ShadowProjector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shadowMesh = GetComponent<MeshRenderer>();
         if(player == null)
             player = transform.parent;
     }
@@ -33,8 +36,11 @@ public class ShadowProjector : MonoBehaviour
         if (!cast1 && !cast2)
         {
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0);
+            shadowMesh.enabled = false;
             return;
         }
+        
+        shadowMesh.enabled = true;
 
         float startY;
         float endY;
