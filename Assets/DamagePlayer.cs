@@ -10,6 +10,7 @@ public class DamagePlayer : MonoBehaviour
    {
       if (other.CompareTag("Player"))
       { 
+         AudioManager.instance.Play("Ded");
          other.transform.position = other.GetComponent<PlayerMovement>()._startPoint;
       }
    }
